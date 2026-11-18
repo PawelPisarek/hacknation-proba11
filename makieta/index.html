@@ -37,6 +37,8 @@
   .glowne strong { display:block; font-size:28px; line-height:1.1; font-variant-numeric:tabular-nums; }
   .glowne span { font-size:13px; }
   .glowne .zle { background:#fde8e6; } .glowne .dobrze { background:#e5f5ec; color:#14532d; }
+  .cel { font-size:11px; color:var(--szary); margin:-4px 0 6px; }
+  details { margin-top:6px; font-size:12px; } summary { cursor:pointer; color:#2557d6; margin-bottom:4px; }
   td.zle { background:#fde8e6; font-weight:700; }
   tr.bez td { color:var(--szary); }
   .liczby b { text-align:right; font-variant-numeric:tabular-nums; }
@@ -141,17 +143,18 @@ function rysujB() {
   document.getElementById("b-zbiory").innerHTML = ZBIORY.map(z => `
     <div class="karta"><h3>Zbiór ${z.nazwa}</h3>
       <div class="glowne">
-        <div class="${(z.fp[1]-z.fp[0])/z.fp[1]>=0.9?"dobrze":"zle"}"><strong>${z.fp[1]-z.fp[0]}/${z.fp[1]}</strong><span>czyste bez alarmu</span></div>
-        <div class="${z.traf[0]/z.traf[1]>=0.9?"dobrze":"zle"}"><strong>${z.traf[0]}/${z.traf[1]}</strong><span>dodatki znalezione</span></div>
-      </div><div class="liczby">
+        <div class="${z.fp[0]/z.fp[1]<=0.1?"dobrze":"zle"}" title="cel: FP ≤ 10% na obraz"><strong>${z.fp[1]-z.fp[0]}/${z.fp[1]}</strong><span>czyste bez alarmu</span></div>
+        <div class="${z.fn[0]/z.fn[1]<=0.1?"dobrze":"zle"}" title="kolor: cel FN ≤ 10% na obraz"><strong>${z.traf[0]}/${z.traf[1]}</strong><span>dodatki znalezione</span></div>
+      </div><p class="cel">kolor: cel FP ≤ 10% i FN ≤ 10% na obraz</p><div class="liczby">
+      <span>FN (obrazy z dodatkiem bez trafienia)</span><b class="${z.fn[0]/z.fn[1]>0.1?"zle":""}">${proc(z.fn)}</b>
+      <span>próg odcinania</span><b>${PROG}%</b>
+      <span>czas / obraz</span><b>${z.czas.toFixed(2).replace(".",",")} s</b>
+    </div><details><summary>szczegóły</summary><div class="liczby">
+      <span>FP (czyste z alarmem)</span><b class="${z.fp[0]/z.fp[1]>0.1?"zle":""}">${proc(z.fp)}</b>
       <span>obrazy bez alarmu (wszystkie)</span><b>${z.bez}</b>
       <span>obrazy z alarmem</span><b>${z.z}</b>
       <span>liczba ramek</span><b>${z.ramek}</b>
-      <span>próg odcinania</span><b>${PROG}%</b>
-      <span>czas / obraz</span><b>${z.czas.toFixed(2).replace(".",",")} s</b>
-      <span>FP (czyste z alarmem)</span><b class="${z.fp[0]/z.fp[1]>0.1?"zle":""}">${proc(z.fp)}</b>
-      <span>FN (z dodatkiem bez trafienia)</span><b class="${z.fn[0]/z.fn[1]>0.1?"zle":""}">${proc(z.fn)}</b>
-    </div><p class="podpis">zbiór ${z.nazwa}, test (ziarno 1), wartość bazowa — docs/wynik_bazowy.md; „próg” i „ramek” — przykład</p></div>`).join("");
+    </div></details><p class="podpis">zbiór ${z.nazwa}, test (ziarno 1), wartość bazowa — docs/wynik_bazowy.md; „próg” i „ramek” — przykład</p></div>`).join("");
   const kom = (m,r) => { const [a,b] = TABELA[m][r], p = Math.round(100*a/b), cel = m==="konstrukcja" && r==="maly";
     return `<td class="${cel && p<80 ? "zle" : ""}">${a}/${b} (${p}%)${cel ? " · cel ≥ 80%" : ""}</td>`; };
   document.getElementById("b-tabela").innerHTML = `<tr><th>miejsce \\ rozmiar</th><th>mały</th><th>duży</th></tr>
