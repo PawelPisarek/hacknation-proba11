@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Makieta — wyszukiwarka anomalii RTG</title>
+<style>
+  :root { --zielony:#1f8a4c; --bursztyn:#c77700; --tlo:#f4f5f7; --tekst:#1b1d21; --szary:#6b7280; --ramka:#d1d5db; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; background:var(--tlo); color:var(--tekst); }
+  main { max-width:1040px; margin:0 auto; padding:12px; }
+  .ukryty { display:none !important; }
+  .dane-info { font-size:12px; color:var(--szary); margin:0 0 8px; }
+  /* Ekran A: dokładnie 4 elementy */
+  .ocena { padding:14px 16px; border-radius:10px; color:#fff; font-size:22px; font-weight:700; margin-bottom:10px; }
+  .ocena small { display:block; font-size:12px; font-weight:400; opacity:.9; }
+  .ocena.czysta { background:var(--zielony); }
+  .ocena.sprawdz { background:var(--bursztyn); }
+  .przelacznik { display:inline-flex; border:1px solid var(--ramka); border-radius:999px; overflow:hidden; margin-bottom:10px; background:#fff; }
+  .przelacznik button { border:0; background:none; padding:10px 18px; font-size:16px; cursor:pointer; }
+  .przelacznik button.wl { background:var(--tekst); color:#fff; }
+  .obraz { position:relative; width:100%; aspect-ratio:1000/360; background:#000; border-radius:6px; overflow:hidden; }
+  .obraz img { width:100%; height:100%; display:block; image-rendering:auto; }
+  .obraz .bbox { position:absolute; border:2px solid #ff3b30; box-shadow:0 0 0 1px #fff; }
+  .obraz .bbox span { position:absolute; left:-2px; bottom:100%; background:#ff3b30; color:#fff; font-size:12px; font-weight:700; padding:1px 5px; white-space:nowrap; border-radius:3px 3px 0 0; }
+  .przycisk { display:inline-block; margin-top:12px; padding:12px 20px; font-size:16px; border-radius:8px; border:0; background:#2557d6; color:#fff; cursor:pointer; text-decoration:none; }
+  .przycisk.drugi { background:#fff; color:var(--tekst); border:1px solid var(--ramka); }
+  /* Ekran B */
+  h1 { font-size:22px; margin:4px 0 12px; }
+  h2 { font-size:17px; margin:20px 0 8px; }
+  .zbiory { display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:10px; }
+  .karta { background:#fff; border:1px solid var(--ramka); border-radius:10px; padding:12px; }
+  .karta h3 { margin:0 0 8px; font-size:16px; }
+  .liczby { display:grid; grid-template-columns:1fr auto; gap:3px 10px; font-size:14px; }
+  .liczby b { text-align:right; font-variant-numeric:tabular-nums; }
+  .podpis { font-size:11px; color:var(--szary); }
+  .zle { color:#b42318; }
+  table { border-collapse:collapse; width:100%; background:#fff; font-size:14px; }
+  th, td { border:1px solid var(--ramka); padding:6px 8px; text-align:left; }
+  th { background:#f9fafb; }
+  tr.klik { cursor:pointer; } tr.klik:hover { background:#eef2ff; } tr.wybrana { background:#e0e7ff; }
+  .kropka { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; }
+  .uwaga { background:#fff7e6; border:1px solid #f5c26b; border-radius:8px; padding:8px 10px; font-size:13px; margin-top:8px; }
+  .przewijana { overflow-x:auto; }
+</style>
+</head>
+<body>
+<main>
+
+<!-- EKRAN A — naczepa: dokładnie cztery elementy -->
+<section id="ekran-a" class="ukryty">
+  <div id="a-ocena" class="ocena"></div>
+  <div class="przelacznik" role="group" aria-label="wzorzec | badany">
+    <button data-widok="wzorzec">wzorzec</button><button data-widok="badany" class="wl">badany</button>
+  </div>
+  <div class="obraz" id="a-obraz"><img id="a-img" alt="obraz RTG naczepy"></div>
+  <a class="przycisk" href="#b">Raport z partii</a>
+</section>
+
+<!-- EKRAN B — raport partii -->
+<section id="ekran-b" class="ukryty">
+  <h1>Raport z partii</h1>
+  <p class="dane-info">Makieta — dane udawane. Naczepy z obrazami: <a href="#a/1">naczepa 1</a> (#a/1), <a href="#a/2">naczepa 2</a> (#a/2).</p>
+  <div class="zbiory" id="b-zbiory"></div>
+  <div class="uwaga">Słabość metody bazowej pokazana jawnie: na zbiorze trudnym i z pustym wzorcem alarm pada na każdym czystym obrazie (FP 100%). Cel: FP ≤ 10% i FN ≤ 10%.</div>
+
+  <h2>Trafienia dodatków: miejsce × rozmiar</h2>
+  <div class="przewijana"><table id="b-tabela"></table></div>
+  <p class="podpis">przykład, zbiór trudny + pusty wzorzec łącznie (rozmiar „mały” = pole &lt; 0,1% obrazu, założenie robocze)</p>
+
+  <h2>Naczepy w partii</h2>
+  <div class="przewijana"><table id="b-naczepy"></table></div>
+  <p class="podpis">przykład, zbiór łatwy — kliknij naczepę 1 lub 2, by otworzyć ekran naczepy</p>
+
+  <h2 id="b-miejsca-tytul">Miejsca: naczepa 2</h2>
+  <div class="przewijana"><table id="b-miejsca"></table></div>
+  <p class="podpis">przykład, zbiór łatwy · położenie w pikselach obrazu 1000×360 (x, y lewego górnego rogu)</p>
+
+  <button class="przycisk" id="b-zapisz">Zapisz do pliku</button>
+  <a class="przycisk drugi" id="b-wroc" href="#a/2">Wróć do naczepy</a>
+</section>
+</main>
+
+<script>
+// ---- Dane udawane ----
+const NACZEPY = {
+  1: { nazwa: "Naczepa 1", zbior: "łatwy", wzorzec: "obrazy/para_000_wzorzec.bmp", badany: "obrazy/para_000_badany.bmp", ramki: [] },
+  2: { nazwa: "Naczepa 2", zbior: "łatwy", wzorzec: "obrazy/para_020_wzorzec.bmp", badany: "obrazy/para_020_badany.bmp",
+       ramki: [ { nr: 1, bbox: [135,252,162,267], pewnosc: 94, miejsce: "konstrukcja" },
+                { nr: 2, bbox: [230,177,278,204], pewnosc: 71, miejsce: "ładunek" } ] },
+};
+// Wartości bazowe z docs/wynik_bazowy.md (zbiory testowe, ziarno 1, 20 czystych + 20 z dodatkiem).
+// "ramek" = dodatki trafione + fałszywe ramki (przybliżenie do makiety).
+const ZBIORY = [
+  { nazwa: "łatwy", bez: 22, z: 18, ramek: 25, fp: [0,20], fn: [2,20], traf: [25,30], czas: 0.17 },
+  { nazwa: "trudny", bez: 4, z: 36, ramek: 444, fp: [20,20], fn: [4,20], traf: [25,32], czas: 0.17 },
+  { nazwa: "pusty wzorzec", bez: 4, z: 36, ramek: 261, fp: [20,20], fn: [4,20], traf: [23,30], czas: 0.16 },
+];
+const PROG = 50; // próg odcinania pewności, % (przykład)
+const TABELA = { // przykład: trafione / wszystkie
+  konstrukcja: { maly: [9,14], duzy: [10,12] },
+  ladunek: { maly: [11,13], duzy: [18,19] },
+};
+const LISTA = [
+  { n: 1, ocena: "czysta", miejsc: 0 }, { n: 2, ocena: "sprawdz", miejsc: 2 },
+  { n: 3, ocena: "czysta", miejsc: 0 }, { n: 4, ocena: "sprawdz", miejsc: 1 }, { n: 5, ocena: "czysta", miejsc: 0 },
+];
+
+const proc = ([x,y]) => `${x}/${y} (${Math.round(100*x/y)}%)`;
+const miejscTxt = n => n === 1 ? "miejsce" : (n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20)) ? "miejsca" : "miejsc";
+let wybrana = 2, widok = "badany";
+
+function rysujA(n) {
+  const nc = NACZEPY[n] || NACZEPY[1]; wybrana = NACZEPY[n] ? n : 1;
+  const k = nc.ramki.length, oc = document.getElementById("a-ocena");
+  oc.className = "ocena " + (k === 0 ? "czysta" : "sprawdz");
+  oc.textContent = k === 0 ? "Czysta — 0 miejsc" : `Do sprawdzenia — ${k} ${miejscTxt(k)}`;
+  oc.innerHTML += ` <small>${nc.nazwa} · zbiór ${nc.zbior} · dane udawane</small>`;
+  document.getElementById("a-img").src = widok === "wzorzec" ? nc.wzorzec : nc.badany;
+  const ob = document.getElementById("a-obraz");
+  ob.querySelectorAll(".bbox").forEach(e => e.remove());
+  if (widok === "badany") for (const r of nc.ramki) {
+    const [x0,y0,x1,y1] = r.bbox, m = 4; // margines ramki
+    const d = document.createElement("div"); d.className = "bbox";
+    Object.assign(d.style, { left: (x0-m)/10+"%", top: (y0-m)/3.6+"%", width: (x1-x0+2*m)/10+"%", height: (y1-y0+2*m)/3.6+"%" });
+    d.innerHTML = `<span>#${r.nr} · ${r.pewnosc}%</span>`; d.title = `zbiór ${nc.zbior}`; ob.appendChild(d);
+  }
+  document.querySelectorAll(".przelacznik button").forEach(b => b.classList.toggle("wl", b.dataset.widok === widok));
+}
+document.querySelectorAll(".przelacznik button").forEach(b => b.onclick = () => { widok = b.dataset.widok; rysujA(wybrana); });
+
+function rysujB() {
+  document.getElementById("b-zbiory").innerHTML = ZBIORY.map(z => `
+    <div class="karta"><h3>Zbiór ${z.nazwa}</h3><div class="liczby">
+      <span>obrazy bez alarmu</span><b>${z.bez}</b>
+      <span>obrazy z alarmem</span><b>${z.z}</b>
+      <span>liczba ramek</span><b>${z.ramek}</b>
+      <span>próg odcinania</span><b>${PROG}%</b>
+      <span>czas / obraz</span><b>${z.czas.toFixed(2).replace(".",",")} s</b>
+      <span>FP (czyste z alarmem)</span><b class="${z.fp[0]/z.fp[1]>0.1?"zle":""}">${proc(z.fp)}</b>
+      <span>FN (z dodatkiem bez trafienia)</span><b class="${z.fn[0]/z.fn[1]>0.1?"zle":""}">${proc(z.fn)}</b>
+      <span>dodatki trafione</span><b>${z.traf[0]}/${z.traf[1]}</b>
+    </div><p class="podpis">zbiór ${z.nazwa}, test (ziarno 1), wartość bazowa — docs/wynik_bazowy.md; „próg” i „ramek” — przykład</p></div>`).join("");
+  const kom = (m,r) => { const [a,b] = TABELA[m][r]; return `<td>${a}/${b} (${Math.round(100*a/b)}%)</td>`; };
+  document.getElementById("b-tabela").innerHTML = `<tr><th>miejsce \\ rozmiar</th><th>mały</th><th>duży</th></tr>
+    <tr><th>konstrukcja</th>${kom("konstrukcja","maly")}${kom("konstrukcja","duzy")}</tr>
+    <tr><th>ładunek</th>${kom("ladunek","maly")}${kom("ladunek","duzy")}</tr>`;
+  document.getElementById("b-naczepy").innerHTML = `<tr><th>naczepa</th><th>ocena</th><th>miejsc</th></tr>` + LISTA.map(l => `
+    <tr class="klik ${l.n===wybrana?"wybrana":""}" data-n="${l.n}"><td>Naczepa ${l.n}</td>
+    <td><span class="kropka" style="background:${l.ocena==="czysta"?"var(--zielony)":"var(--bursztyn)"}"></span>${l.ocena==="czysta"?"Czysta":"Do sprawdzenia"}</td><td>${l.miejsc}</td></tr>`).join("");
+  document.querySelectorAll("#b-naczepy tr.klik").forEach(tr => tr.onclick = () => {
+    const n = +tr.dataset.n; if (NACZEPY[n]) location.hash = "#a/" + n; else alert("W makiecie obrazy są tylko dla naczep 1 i 2.");
+  });
+  const nc = NACZEPY[wybrana];
+  document.getElementById("b-miejsca-tytul").textContent = `Miejsca: ${nc.nazwa}`;
+  document.getElementById("b-miejsca").innerHTML = `<tr><th>#</th><th>położenie (x, y)</th><th>strefa</th><th>pewność</th></tr>` +
+    (nc.ramki.length ? nc.ramki.map(r => `<tr><td>#${r.nr}</td><td>${r.bbox[0]}, ${r.bbox[1]}</td><td>${r.miejsce}</td><td>${r.pewnosc}%</td></tr>`).join("")
+                     : `<tr><td colspan="4">brak miejsc — naczepa czysta</td></tr>`);
+  document.getElementById("b-wroc").href = "#a/" + wybrana;
+}
+
+document.getElementById("b-zapisz").onclick = () => {
+  const raport = { prog_pewnosci: PROG, zbiory: ZBIORY, tabela_miejsce_rozmiar: TABELA, naczepy: LISTA, uwaga: "makieta — dane udawane" };
+  const pobierz = (nazwa, typ, tresc) => { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([tresc], {type: typ})); a.download = nazwa; a.click(); };
+  pobierz("raport_partii.json", "application/json", JSON.stringify(raport, null, 2));
+  pobierz("raport_partii.html", "text/html", "<!doctype html><meta charset=utf-8><title>Raport z partii</title>" + document.getElementById("ekran-b").innerHTML);
+};
+
+function trasa() {
+  const h = location.hash || "#a/1";
+  const a = h.startsWith("#a");
+  document.getElementById("ekran-a").classList.toggle("ukryty", !a);
+  document.getElementById("ekran-b").classList.toggle("ukryty", a);
+  if (a) { widok = "badany"; rysujA(+(h.split("/")[1] || 1)); } else rysujB();
+  window.scrollTo(0, 0);
+}
+window.addEventListener("hashchange", trasa); trasa();
+</script>
+</body>
+</html>
