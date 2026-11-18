@@ -91,3 +91,4 @@ P20 08:51 odpowiedź: tak, to pierwsze ryzyko; fałszywe alarmy na czystych to p
 08:52 Szef: próg odcinania = minimalna pewność ramki w %; `k` parametr wewnętrzny; oba w JSON.
 P21 08:52 Artur: Drugie ryzyko do sprawdzenia: czy narzędzie znajdzie małe dodatki w konstrukcji (osobno małe i duże)? (rekomendacja: tak, a słabość jawnie w raporcie) — czeka
 P21 08:53 odpowiedź: tak, to sedno zadania — obecne narzędzie KAS zawodzi na małych ilościach w konstrukcji; jawna słabość w raporcie — Artur w pokoju
+08:53 Szef: odbiorca R1 poprawione przez Projektanta (spec); recenzja odbiorcy R2 → Programista.
