@@ -13,16 +13,16 @@
   .dane-info { font-size:12px; color:var(--szary); margin:0 0 8px; }
   /* Ekran A: dokładnie 4 elementy */
   .ocena { padding:14px 16px; border-radius:10px; color:#fff; font-size:22px; font-weight:700; margin-bottom:10px; }
-  .ocena small { display:block; font-size:12px; font-weight:400; opacity:.9; }
+  .ocena small { display:block; font-size:16px; font-weight:600; margin-top:2px; }
   .ocena.czysta { background:var(--zielony); }
   .ocena.sprawdz { background:var(--bursztyn); }
   .przelacznik { display:inline-flex; border:1px solid var(--ramka); border-radius:999px; overflow:hidden; margin-bottom:10px; background:#fff; }
   .przelacznik button { border:0; background:none; padding:10px 18px; font-size:16px; cursor:pointer; }
   .przelacznik button.wl { background:var(--tekst); color:#fff; }
-  .obraz { position:relative; width:100%; aspect-ratio:1000/360; background:#000; border-radius:6px; overflow:hidden; }
+  .obraz { position:relative; padding:0; width:100%; aspect-ratio:1000/360; background:#000; border-radius:6px; overflow:hidden; }
   .obraz img { width:100%; height:100%; display:block; image-rendering:auto; }
   .obraz .bbox { position:absolute; border:2px solid #ff3b30; box-shadow:0 0 0 1px #fff; }
-  .obraz .bbox span { position:absolute; left:-2px; bottom:100%; background:#ff3b30; color:#fff; font-size:12px; font-weight:700; padding:1px 5px; white-space:nowrap; border-radius:3px 3px 0 0; }
+  .obraz .bbox span { position:absolute; left:-2px; bottom:calc(100% + 6px); background:#ff3b30; color:#fff; font-size:12px; font-weight:700; padding:1px 5px; white-space:nowrap; border-radius:3px; }
   .przycisk { display:inline-block; margin-top:12px; padding:12px 20px; font-size:16px; border-radius:8px; border:0; background:#2557d6; color:#fff; cursor:pointer; text-decoration:none; }
   .przycisk.drugi { background:#fff; color:var(--tekst); border:1px solid var(--ramka); }
   /* Ekran B */
@@ -31,7 +31,14 @@
   .zbiory { display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:10px; }
   .karta { background:#fff; border:1px solid var(--ramka); border-radius:10px; padding:12px; }
   .karta h3 { margin:0 0 8px; font-size:16px; }
-  .liczby { display:grid; grid-template-columns:1fr auto; gap:3px 10px; font-size:14px; }
+  .liczby { display:grid; grid-template-columns:1fr auto; gap:2px 10px; font-size:12px; color:#374151; }
+  .glowne { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px; }
+  .glowne div { border-radius:8px; padding:8px; background:#f3f4f6; }
+  .glowne strong { display:block; font-size:28px; line-height:1.1; font-variant-numeric:tabular-nums; }
+  .glowne span { font-size:13px; }
+  .glowne .zle { background:#fde8e6; } .glowne .dobrze { background:#e5f5ec; color:#14532d; }
+  td.zle { background:#fde8e6; font-weight:700; }
+  tr.bez td { color:var(--szary); }
   .liczby b { text-align:right; font-variant-numeric:tabular-nums; }
   .podpis { font-size:11px; color:var(--szary); }
   .zle { color:#b42318; }
@@ -62,19 +69,16 @@
   <h1>Raport z partii</h1>
   <p class="dane-info">Makieta — dane udawane. Naczepy z obrazami: <a href="#a/1">naczepa 1</a> (#a/1), <a href="#a/2">naczepa 2</a> (#a/2).</p>
   <div class="zbiory" id="b-zbiory"></div>
-  <div class="uwaga">Słabość metody bazowej pokazana jawnie: na zbiorze trudnym i z pustym wzorcem alarm pada na każdym czystym obrazie (FP 100%). Cel: FP ≤ 10% i FN ≤ 10%.</div>
+  <div class="uwaga">Słabość metody bazowej pokazana jawnie: na zbiorze trudnym i z pustym wzorcem alarm pada na każdym czystym obrazie (FP 100%), a małe dodatki w konstrukcji są znajdowane w 56% (cel ≥ 80%). Cel: FP ≤ 10% i FN ≤ 10%.</div>
 
   <h2>Trafienia dodatków: miejsce × rozmiar</h2>
   <div class="przewijana"><table id="b-tabela"></table></div>
-  <p class="podpis">przykład, zbiór trudny + pusty wzorzec łącznie (rozmiar „mały” = pole &lt; 0,1% obrazu, założenie robocze)</p>
+  <p class="podpis">przykład, zbiór trudny + pusty wzorzec łącznie, 48/62 dodatków jak na kartach (rozmiar „mały” = pole &lt; 0,1% obrazu, założenie robocze)</p>
 
   <h2>Naczepy w partii</h2>
   <div class="przewijana"><table id="b-naczepy"></table></div>
-  <p class="podpis">przykład, zbiór łatwy — kliknij naczepę 1 lub 2, by otworzyć ekran naczepy</p>
+  <p class="podpis">podgląd 5 z 40 naczep, zbiór łatwy (przykład) — naczepy 1 i 2 otwierają ekran naczepy</p>
 
-  <h2 id="b-miejsca-tytul">Miejsca: naczepa 2</h2>
-  <div class="przewijana"><table id="b-miejsca"></table></div>
-  <p class="podpis">przykład, zbiór łatwy · położenie w pikselach obrazu 1000×360 (x, y lewego górnego rogu)</p>
 
   <button class="przycisk" id="b-zapisz">Zapisz do pliku</button>
   <a class="przycisk drugi" id="b-wroc" href="#a/2">Wróć do naczepy</a>
@@ -98,8 +102,8 @@ const ZBIORY = [
 ];
 const PROG = 50; // próg odcinania pewności, % (przykład)
 const TABELA = { // przykład: trafione / wszystkie
-  konstrukcja: { maly: [9,14], duzy: [10,12] },
-  ladunek: { maly: [11,13], duzy: [18,19] },
+  konstrukcja: { maly: [9,16], duzy: [12,14] },
+  ladunek: { maly: [11,13], duzy: [16,19] }, // suma: 48/62 = trudny 25/32 + pusty wzorzec 23/30
 };
 const LISTA = [
   { n: 1, ocena: "czysta", miejsc: 0 }, { n: 2, ocena: "sprawdz", miejsc: 2 },
@@ -131,31 +135,30 @@ document.querySelectorAll(".przelacznik button").forEach(b => b.onclick = () => 
 
 function rysujB() {
   document.getElementById("b-zbiory").innerHTML = ZBIORY.map(z => `
-    <div class="karta"><h3>Zbiór ${z.nazwa}</h3><div class="liczby">
-      <span>obrazy bez alarmu</span><b>${z.bez}</b>
+    <div class="karta"><h3>Zbiór ${z.nazwa}</h3>
+      <div class="glowne">
+        <div class="${(z.fp[1]-z.fp[0])/z.fp[1]>=0.9?"dobrze":"zle"}"><strong>${z.fp[1]-z.fp[0]}/${z.fp[1]}</strong><span>czyste bez alarmu</span></div>
+        <div class="${z.traf[0]/z.traf[1]>=0.9?"dobrze":"zle"}"><strong>${z.traf[0]}/${z.traf[1]}</strong><span>dodatki znalezione</span></div>
+      </div><div class="liczby">
+      <span>obrazy bez alarmu (wszystkie)</span><b>${z.bez}</b>
       <span>obrazy z alarmem</span><b>${z.z}</b>
       <span>liczba ramek</span><b>${z.ramek}</b>
       <span>próg odcinania</span><b>${PROG}%</b>
       <span>czas / obraz</span><b>${z.czas.toFixed(2).replace(".",",")} s</b>
       <span>FP (czyste z alarmem)</span><b class="${z.fp[0]/z.fp[1]>0.1?"zle":""}">${proc(z.fp)}</b>
       <span>FN (z dodatkiem bez trafienia)</span><b class="${z.fn[0]/z.fn[1]>0.1?"zle":""}">${proc(z.fn)}</b>
-      <span>dodatki trafione</span><b>${z.traf[0]}/${z.traf[1]}</b>
     </div><p class="podpis">zbiór ${z.nazwa}, test (ziarno 1), wartość bazowa — docs/wynik_bazowy.md; „próg” i „ramek” — przykład</p></div>`).join("");
-  const kom = (m,r) => { const [a,b] = TABELA[m][r]; return `<td>${a}/${b} (${Math.round(100*a/b)}%)</td>`; };
+  const kom = (m,r) => { const [a,b] = TABELA[m][r], p = Math.round(100*a/b), cel = m==="konstrukcja" && r==="maly";
+    return `<td class="${cel && p<80 ? "zle" : ""}">${a}/${b} (${p}%)${cel ? " · cel ≥ 80%" : ""}</td>`; };
   document.getElementById("b-tabela").innerHTML = `<tr><th>miejsce \\ rozmiar</th><th>mały</th><th>duży</th></tr>
     <tr><th>konstrukcja</th>${kom("konstrukcja","maly")}${kom("konstrukcja","duzy")}</tr>
     <tr><th>ładunek</th>${kom("ladunek","maly")}${kom("ladunek","duzy")}</tr>`;
   document.getElementById("b-naczepy").innerHTML = `<tr><th>naczepa</th><th>ocena</th><th>miejsc</th></tr>` + LISTA.map(l => `
-    <tr class="klik ${l.n===wybrana?"wybrana":""}" data-n="${l.n}"><td>Naczepa ${l.n}</td>
+    <tr class="${NACZEPY[l.n]?"klik":"bez"} ${l.n===wybrana?"wybrana":""}" data-n="${l.n}"><td>Naczepa ${l.n}</td>
     <td><span class="kropka" style="background:${l.ocena==="czysta"?"var(--zielony)":"var(--bursztyn)"}"></span>${l.ocena==="czysta"?"Czysta":"Do sprawdzenia"}</td><td>${l.miejsc}</td></tr>`).join("");
   document.querySelectorAll("#b-naczepy tr.klik").forEach(tr => tr.onclick = () => {
-    const n = +tr.dataset.n; if (NACZEPY[n]) location.hash = "#a/" + n; else alert("W makiecie obrazy są tylko dla naczep 1 i 2.");
+    const n = +tr.dataset.n; if (NACZEPY[n]) location.hash = "#a/" + n;
   });
-  const nc = NACZEPY[wybrana];
-  document.getElementById("b-miejsca-tytul").textContent = `Miejsca: ${nc.nazwa}`;
-  document.getElementById("b-miejsca").innerHTML = `<tr><th>#</th><th>położenie (x, y)</th><th>strefa</th><th>pewność</th></tr>` +
-    (nc.ramki.length ? nc.ramki.map(r => `<tr><td>#${r.nr}</td><td>${r.bbox[0]}, ${r.bbox[1]}</td><td>${r.miejsce}</td><td>${r.pewnosc}%</td></tr>`).join("")
-                     : `<tr><td colspan="4">brak miejsc — naczepa czysta</td></tr>`);
   document.getElementById("b-wroc").href = "#a/" + wybrana;
 }
 
