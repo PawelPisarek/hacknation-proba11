@@ -1,5 +1,5 @@
 # Stan — próba 11
-Kamień: makieta pod gh-pages (koniec próby po krytyku makiety). Teraz 08:17.
+Kamień: makieta pod gh-pages (koniec próby po krytyku makiety). Teraz 08:21.
 
 | zadanie | kto | status |
 |---|---|---|
@@ -13,5 +13,5 @@ Kamień: makieta pod gh-pages (koniec próby po krytyku makiety). Teraz 08:17.
 | 2 /write-prd | Projektant | czeka na pętlę 1b |
 | makieta + krytyk | Programista, Analityk | czeka na spec |
 
-Otwarte pytania: P1, P4 (Paweł); P5–P8 (Artur, Projektant w pokoju).
+Otwarte pytania: P4 (Paweł); P5–P8 (Artur, Projektant w pokoju; P5 odpowiedziane w pokoju). P1 → rekomendacja.
 Zadania kryterium: docs/zadania/01-kryterium-skutecznosc-fp.md (ntfy 202).
