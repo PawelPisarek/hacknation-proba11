@@ -98,3 +98,5 @@ P21 08:53 odpowiedź: tak, to sedno zadania — obecne narzędzie KAS zawodzi na
 09:01 Szef: cofnięte przez Szefa — mój wpis 08:59 o usunięciu listy miejsc był błędny: Artur 08:38 przeniósł listę miejsc do raportu z partii (ekran B), spec §2 pkt 4 słusznie. Programista przywraca listę na ekranie B.
 09:01 Szef: makieta — duża liczba zielona od 90% (spójnie z celem FP/FN ≤ 10%); przyjęte.
 - 09:04 Szef: lista miejsc przywrócona na ekranie B (main 46c5559, gh-pages 74f7545, HTTP 200); krytyk R2 → Analityk.
+- 09:05 Szef: krytyk makiety R2 8/10, 3 braki (kolor dużej liczby dodatków, 9 wierszy w karcie, brak zrzutu czystej naczepy) → Programista.
+- 09:05 Szef: duża liczba „dodatki znalezione” zostaje w dodatkach (Artur P13), ale kolor bierze z celu FN ≤ 10% na obraz (zielona, gdy cel spełniony); wiersze dublujące duże liczby chowamy pod „szczegóły”.
