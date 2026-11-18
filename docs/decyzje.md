@@ -25,3 +25,6 @@ P4 08:14 Paweł: na jakim sprzęcie ma się mieścić „< 1 min na obraz” ~50
 - 08:16 Szef: krok 0P zamknięty — wynik bazowy test: FP 0/20, FN 2/20, 0,17 s/obraz; 50 MB ~4 s. Dalej (obok łańcucha): trudniejszy generator czystych par → Programista.
 - 08:17 Szef: 1a recenzja runda 3 — „brak braków zmieniających zakres lub kryteria” → krok 1a zamknięty (3 rundy). Start 1b /discover → Projektant.
 - 08:17 Szef: rodzaj wzorca — obsługujemy oba warianty z zadania (pkt 3 i 7): wzorzec = obraz tego środka bez anomalii, pusty albo „przed” załadunkiem; narzędzie nie zakłada, który.
+P5 08:17 Artur: Jaki problem operatora jest dziś największy: drobne ukryte rzeczy umykają, zmęczenie przy dużej liczbie obrazów, czy pośpiech? (rekomendacja: drobne ukryte rzeczy w konstrukcji i ładunku, bo to opisuje zadanie i tam obecne narzędzie zawodzi) — czeka
+P6 08:17 Artur: Co zyska operator, a co jego przełożony dzięki narzędziu? (rekomendacja: operator — podpowiedź, gdzie patrzeć, i mniej zgadywania; przełożony — mniej niepotrzebnych kontroli fizycznych i zapis wyniku przy miejscu kontroli) — czeka
+P7 08:17 Artur: W jakich chwilach operator użyje narzędzia: tuż po prześwietleniu jednej naczepy, przy przeglądzie kolejki naczep, czy przy późniejszym sprawdzeniu archiwum? (rekomendacja: najpierw tuż po prześwietleniu jednej naczepy, potem kolejka; archiwum pomijamy) — czeka
