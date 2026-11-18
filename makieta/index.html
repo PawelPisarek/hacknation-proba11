@@ -79,6 +79,10 @@
   <div class="przewijana"><table id="b-naczepy"></table></div>
   <p class="podpis">podgląd 5 z 40 naczep, zbiór łatwy (przykład) — naczepy 1 i 2 otwierają ekran naczepy</p>
 
+  <h2 id="b-miejsca-tytul">Miejsca: naczepa 2</h2>
+  <div class="przewijana"><table id="b-miejsca"></table></div>
+  <p class="podpis">przykład, zbiór łatwy · położenie w pikselach obrazu 1000×360 (x, y lewego górnego rogu ramki)</p>
+
 
   <button class="przycisk" id="b-zapisz">Zapisz do pliku</button>
   <a class="przycisk drugi" id="b-wroc" href="#a/2">Wróć do naczepy</a>
@@ -159,11 +163,16 @@ function rysujB() {
   document.querySelectorAll("#b-naczepy tr.klik").forEach(tr => tr.onclick = () => {
     const n = +tr.dataset.n; if (NACZEPY[n]) location.hash = "#a/" + n;
   });
+  const nc = NACZEPY[wybrana];
+  document.getElementById("b-miejsca-tytul").textContent = `Miejsca: ${nc.nazwa}`;
+  document.getElementById("b-miejsca").innerHTML = `<tr><th>#</th><th>położenie (x, y)</th><th>pewność</th></tr>` +
+    (nc.ramki.length ? nc.ramki.map(r => `<tr><td>#${r.nr}</td><td>${r.bbox[0]}, ${r.bbox[1]}</td><td>${r.pewnosc}%</td></tr>`).join("")
+                     : `<tr><td colspan="3">brak miejsc — naczepa czysta</td></tr>`);
   document.getElementById("b-wroc").href = "#a/" + wybrana;
 }
 
 document.getElementById("b-zapisz").onclick = () => {
-  const raport = { prog_pewnosci: PROG, zbiory: ZBIORY, tabela_miejsce_rozmiar: TABELA, naczepy: LISTA, uwaga: "makieta — dane udawane" };
+  const raport = { prog_pewnosci: PROG, zbiory: ZBIORY, tabela_miejsce_rozmiar: TABELA, naczepy: LISTA, miejsca: { naczepa: wybrana, ramki: NACZEPY[wybrana].ramki }, uwaga: "makieta — dane udawane" };
   const pobierz = (nazwa, typ, tresc) => { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([tresc], {type: typ})); a.download = nazwa; a.click(); };
   pobierz("raport_partii.json", "application/json", JSON.stringify(raport, null, 2));
   pobierz("raport_partii.html", "text/html", "<!doctype html><meta charset=utf-8><title>Raport z partii</title>" + document.getElementById("ekran-b").innerHTML);
