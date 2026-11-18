@@ -1,5 +1,5 @@
 # Stan — próba 11
-Kamień: makieta pod gh-pages (koniec próby po krytyku makiety). Teraz 08:58.
+Kamień: makieta pod gh-pages (koniec próby po krytyku makiety). Teraz 09:08.
 
 | zadanie | kto | status |
 |---|---|---|
@@ -11,7 +11,7 @@ Kamień: makieta pod gh-pages (koniec próby po krytyku makiety). Teraz 08:58.
 | przesłuchanie Artura (pokój Produkt) | Projektant | zlecone |
 | 1b /discover → docs/pm/02 | Projektant | zamknięte (3 rundy, 2 braki → ryzyka, P18 rekomendacja) |
 | 2 /write-prd | Projektant | zamknięte (przejście 3 rundy, odbiorca 2 rundy) |
-| makieta (gh-pages) + krytyk | Programista, Analityk | R1 6/10, R2 8/10, poprawki (200); krytyk R3 → Analityk |
+| makieta (gh-pages) + krytyk | Programista, Analityk | zamknięte (R1 6/10, R2 8/10, R3 9/10) |
 
 Otwarte pytania: P22 mały/duży (Artur, Projektant). P17, P19, P20, P21 odpowiedź. P1, P4, P18 → rekomendacja.
-Zadania kryterium: docs/zadania/01-kryterium-skutecznosc-fp.md (ntfy 202).
+Zadania kryterium: 01 skuteczność FP, 02 innowacyjność, 03 skalowalność (ntfy 202).
