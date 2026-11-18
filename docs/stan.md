@@ -13,5 +13,5 @@ Kamień: makieta pod gh-pages (koniec próby po krytyku makiety). Teraz 08:51.
 | 2 /write-prd → docs/pm/03 + docs/spec.md | Projektant | przejście zamknięte (3 rundy); recenzja odbiorcy (Programista) |
 | makieta + krytyk | Programista, Analityk | czeka na spec |
 
-Otwarte pytania: P20 (Artur, Projektant — Z2); dalej P21 Z1, P22 mały/duży. P17, P19 odpowiedź. P1, P4, P18 → rekomendacja.
+Otwarte pytania: P21 Z1, P22 mały/duży (Artur, Projektant). P17, P19, P20 odpowiedź. P1, P4, P18 → rekomendacja.
 Zadania kryterium: docs/zadania/01-kryterium-skutecznosc-fp.md (ntfy 202).
