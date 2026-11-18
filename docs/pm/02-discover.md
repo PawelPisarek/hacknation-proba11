@@ -63,7 +63,7 @@ Zbiór pomiarowy dla Z1 i Z2: **trudny** (`generuj … --trudny`) i wariant z pu
 |---|---|---|---|
 | Z2 | Różnica po rejestracji na zbiorze trudnym i z pustym wzorcem | FP ≤ 10% i FN ≤ 10% na obu zbiorach (osobno) | FP lub FN > 10% na którymś → przejście na mocniejszą metodę (PatchCore/PaDiM) dla tego zbioru; próg dobieramy tak, by oba błędy były ≤ 10% |
 | Z1 | Dodatki o różnej wielkości i w różnych miejscach, ten sam zbiór trudny | FN ≤ 10% (jak w Z2) oraz tabela trafień wg miejsca (konstrukcja/ładunek) × rozmiar (mały/duży); w komórce „mały w konstrukcji” trafienia ≥ 80% (założenie) | FN > 10% lub komórka < 80% → czulsze okno/mniejsze progi; wynik zapisany w ryzykach jako znana słabość |
-| Z3 | Porównanie sposobów nauki z N czystych (np. średnia vs model z rozkładem) — nauka zostaje, wybieramy sposób | wybrany sposób ma FP i FN, każdy osobno, niższe o ≥ 20% względnie od najprostszego | brak różnicy → zostaje najprostszy; nauka z wielu czystych pozostaje |
+| Z3 | Porównanie sposobów nauki z N czystych (np. średnia vs model z rozkładem) — nauka zostaje, wybieramy sposób | FP i FN liczone osobno: żaden nie jest gorszy od najprostszego sposobu, a co najmniej jeden jest niższy o ≥ 20% względnie (gdy wartość bazowa > 0); próg 20% to założenie bez źródła | brak różnicy → zostaje najprostszy; nauka z wielu czystych pozostaje |
 | Z5 | Pomiar czasu na obrazie ~50 MB | < 60 s | ≥ 60 s → zmniejszenie skali + zapis założenia |
 | Z4 | Próba z Arturem/Pawłem na makiecie: „czy naczepa jest czysta i gdzie jest dodatek?”, z przełącznikiem „wzorzec / badany” | poprawna odpowiedź w < 10 s bez wyjaśnień | błąd → przeprojektować pasek lub przełącznik |
 

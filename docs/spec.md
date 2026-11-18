@@ -16,11 +16,11 @@ Nie ma: listy miejsc, zapisu, progu odcinania, przycisków „Poprzednia / Nast�
 **Dane udawane (makieta), każda liczba z podpisem zbioru:** naczepa 1 — czysta, zielona, 0 ramek (zbiór łatwy); naczepa 2 — z dodatkiem, „Do sprawdzenia — 2 miejsca”, ramki #1 94%, #2 71% (zbiór łatwy).
 ### Ekran B — raport partii
 1. **Liczby u góry**: obrazy bez alarmu, obrazy z alarmem, liczba ramek, **próg odcinania** (jawnie, P19), czas/obraz.
-2. **Dwa zbiory obok siebie: łatwy i trudny** (każda liczba podpisana nazwą zbioru). Gdy `prawda.json`: FP (x/y, %), FN (x/y, %) osobno, tabela trafień dodatków miejsce (konstrukcja / ładunek) × rozmiar (mały / duży).
+2. **Trzy zbiory: łatwy, trudny, pusty wzorzec** (każda liczba podpisana nazwą zbioru). Gdy `prawda.json`: FP (x/y, %), FN (x/y, %) osobno, tabela trafień dodatków miejsce (konstrukcja / ładunek) × rozmiar (mały / duży).
 3. **Lista naczep** z oceną, klik → ekran A.
 4. **Lista miejsc** wybranej naczepy: #N, położenie, pewność.
 5. **„Zapisz do pliku”** (JSON + HTML) — tylko tu. „Wróć do naczepy”.
-**Dane udawane:** z `rtg ocena` na obu zbiorach, jeśli są; inaczej wartości przykładowe z podpisem „przykład, zbiór łatwy / trudny”. Wartość bazowa dziś (`docs/wynik_bazowy.md`): łatwy FP 0/20, FN 2/20; trudny FP 20/20, FN 4/20 — nie ukrywać.
+**Dane udawane:** z `rtg ocena` na trzech zbiorach, jeśli są; inaczej wartości przykładowe z podpisem „przykład, zbiór łatwy / trudny”. Wartość bazowa dziś (`docs/wynik_bazowy.md`): łatwy FP 0/20, FN 2/20; trudny FP 20/20, FN 4/20 — nie ukrywać.
 
 ### Definicje do pomiaru
 - **Konstrukcja / ładunek**: strefa obrazu, w której generator umieścił dodatek — `miejsce` w `prawda.json`: „konstrukcja” = ramy, podwozie i pas dolny (`strefy["konstrukcja"]` w `rtg/generator.py`), „ladunek” = obszar palet.
@@ -48,12 +48,12 @@ FP i FN **osobno**, na obraz, jak w `rtg/ocena.py`; roboczo każdy ≤ 10% (bez 
 1. `generuj --trudny` i `--pusty-wzorzec`, `ocena`: FP ≤ 10% i FN ≤ 10% osobno na każdym (Z2). Dziś niespełnione: FP 100% na trudnym.
 2. Czysty obraz → „zielona”, 0 ramek; obraz z dodatkiem → „do sprawdzenia”, ≥ 1 ramka na dodatku.
 3. Tabela trafień miejsce × rozmiar; komórka „mały w konstrukcji” ≥ 80% (Z1, założenie).
-4. Nauka z wielu czystych: wybrany sposób ma FP i FN, każdy osobno, niższe o ≥ 20% względnie od najprostszego (Z3).
+4. Nauka z wielu czystych (Z3): FP i FN liczone osobno: żaden nie jest gorszy od najprostszego sposobu, a co najmniej jeden jest niższy o ≥ 20% względnie (gdy wartość bazowa > 0); próg 20% to założenie bez źródła.
 5. Czas analizy: < 1 min na obraz ~50 MB na zwykłym laptopie z CPU; ≥ 60 s → zmniejszenie skali i zapis założenia (Z5). Baza: 1,7 s liczenie, ~4 s z wczytaniem.
 6. Próba z człowiekiem na makiecie (Artur/Paweł): „czy naczepa jest czysta i gdzie jest dodatek?” — poprawna odpowiedź w < 10 s bez wyjaśnień (Z4).
 7. Ekran A zawiera dokładnie cztery elementy z sekcji 2; lista miejsc, zapis do pliku i próg tylko w ekranie B.
 8. `porownaj --folder` z `prawda.json` → raport z FP, FN, tabelą; bez `prawda.json` → liczby bez alarmu / z alarmem / ramek.
-9. Każda liczba w makiecie podpisana zbiorem (łatwy / trudny); raport partii pokazuje oba.
+9. Każda liczba w makiecie podpisana zbiorem (łatwy / trudny / pusty wzorzec); raport partii pokazuje wszystkie trzy.
 10. Uruchomienie z README przez osobę z zewnątrz; licencja MIT; w repo, makiecie i slajdach tylko dane syntetyczne.
 
 ## 8. Ryzyka i kryteria (z `/discover`)
