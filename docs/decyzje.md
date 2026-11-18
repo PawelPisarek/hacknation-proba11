@@ -22,3 +22,4 @@ P4 08:14 Paweł: na jakim sprzęcie ma się mieścić „< 1 min na obraz” ~50
 - 08:15 Programista: strojenie progu k na zbiorze dev (ziarno 0), wynik raportowany na test (ziarno 1). Próbka w repo: dane/probka (600×216, 8 par, 2 MB); większe zbiory i obrazy ~50 MB generowane lokalnie do dane/gen/ (nie w repo).
 - 08:16 Projektant: poprawka 1a runda 2 — rozstrzygnięcia Szefa 08:14–08:15 przeniesione jako ustalone, pyt. 7–8 usunięte z listy do Artura, pyt. 3 zawężone, źródła/„niezweryfikowane” przy twierdzeniach o konkurencji, ochrona danych (pkt 7) w zagrożeniach i rekomendacjach
 - 08:16 Szef: 1a recenzja przejścia runda 3 (ostatnia) → Analityk
+- 08:16 Szef: krok 0P zamknięty — wynik bazowy test: FP 0/20, FN 2/20, 0,17 s/obraz; 50 MB ~4 s. Dalej (obok łańcucha): trudniejszy generator czystych par → Programista.
