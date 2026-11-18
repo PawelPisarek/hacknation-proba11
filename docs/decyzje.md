@@ -95,3 +95,5 @@ P21 08:53 odpowiedź: tak, to sedno zadania — obecne narzędzie KAS zawodzi na
 08:53 Szef: recenzja odbiorcy R2 — brak braków; spec do budowy. Pole JSON: prog_pewnosci (Programista). Makieta → Programista.
 08:58 Szef: makieta R1 na gh-pages (200), zrzuty docs/makieta/ekran-a.png, ekran-b.png; krytyk R1 → Analityk.
 08:59 Szef: krytyk makiety R1 — ocena 6/10, 5 braków (wszystkie poprawki Programisty) + lista miejsc na ekranie B wbrew Arturowi 08:38 → usunąć. Poprawka R1 → Programista.
+09:01 Szef: cofnięte przez Szefa — mój wpis 08:59 o usunięciu listy miejsc był błędny: Artur 08:38 przeniósł listę miejsc do raportu z partii (ekran B), spec §2 pkt 4 słusznie. Programista przywraca listę na ekranie B.
+09:01 Szef: makieta — duża liczba zielona od 90% (spójnie z celem FP/FN ≤ 10%); przyjęte.
