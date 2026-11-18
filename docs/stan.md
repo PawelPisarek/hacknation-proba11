@@ -1,5 +1,5 @@
 # Stan — próba 11
-Kamień: makieta pod gh-pages (koniec próby po krytyku makiety). Teraz 08:29.
+Kamień: makieta pod gh-pages (koniec próby po krytyku makiety). Teraz 08:30.
 
 | zadanie | kto | status |
 |---|---|---|
@@ -9,9 +9,9 @@ Kamień: makieta pod gh-pages (koniec próby po krytyku makiety). Teraz 08:29.
 | 0P++ metoda odporna na trudny zbiór | Programista | zlecone |
 | 1a /competitive-analysis → docs/pm/01 | Projektant | zamknięte (3 rundy) |
 | przesłuchanie Artura (pokój Produkt) | Projektant | zlecone |
-| 1b /discover → docs/pm/02 | Projektant | w toku (szkic 04eb1c1, domknięcie zlecone 08:29) |
+| 1b /discover → docs/pm/02 | Projektant | recenzja 1 (Analityk) |
 | 2 /write-prd | Projektant | czeka na pętlę 1b |
 | makieta + krytyk | Programista, Analityk | czeka na spec |
 
-Otwarte pytania: brak. P5–P13 odpowiedziane (Artur w pokoju); P1, P4 → rekomendacja.
+Otwarte pytania: P14 (Artur, szkic ekranu). P1, P4 → rekomendacja.
 Zadania kryterium: docs/zadania/01-kryterium-skutecznosc-fp.md (ntfy 202).

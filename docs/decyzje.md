@@ -48,3 +48,4 @@ P11 08:27 potwierdzenie: system wybiera wzorzec — Artur w pokoju
 P12 08:27 odpowiedź: w pokazie jeden obraz; partia (kolejka) przez zbiorczy raport z przeliczenia folderu — Artur w pokoju
 P13 08:28 odpowiedź: pokaz = dwie naczepy pod rząd (czysta bez zaznaczeń, potem z dodatkiem z ramką); na koniec ~10 s na raport z partii: ile czystych bez alarmu, ile dodatków znalezionych (liczby dla jury, 40%) — Artur w pokoju
 P14 08:28 Artur: Który z trzech szkiców ekranu bierzemy: (1) jeden obraz na cały ekran, (2) najpierw lista/kolejka naczep, (3) wzorzec i badany obok siebie? (rekomendacja: wariant 1 z paskiem oceny nad obrazem, partia jako osobny raport) — czeka
+1b recenzja przejścia runda 1 → Analityk (08:30)
