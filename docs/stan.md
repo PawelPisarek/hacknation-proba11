@@ -13,5 +13,5 @@ Kamień: makieta pod gh-pages (koniec próby po krytyku makiety). Teraz 08:34.
 | 2 /write-prd | Projektant | czeka na pętlę 1b |
 | makieta + krytyk | Programista, Analityk | czeka na spec |
 
-Otwarte pytania: P18 (Paweł, puścić 1b dalej). P16 (Artur, Projektant). P1, P4 → rekomendacja.
+Otwarte pytania: P18 (Paweł, puścić 1b dalej); P17 (Artur, Projektant). P1, P4 → rekomendacja.
 Zadania kryterium: docs/zadania/01-kryterium-skutecznosc-fp.md (ntfy 202).
