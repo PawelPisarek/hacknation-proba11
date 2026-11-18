@@ -12,3 +12,6 @@ Nadal FP > 10% na trudnym i 100% przy pustym wzorcu — plan „wzorzec z wielu 
 
 ## 09:14 — po ujednoliceniu „mały” (8b0aef0)
 Liczby FP/FN bez zmian. Małych dodatków w test tylko 15 (konstrukcja/małe: 2/2 trudny, 0/1 pusty wz.) — skuteczność na małych niemierzalna; zbiór z wymuszonymi małymi w toku.
+
+## 09:17 — małe dodatki (7160a7c)
+Trudny/małe test: FP 3/20, FN 3/20, konstrukcja/małe 7/8. Pusty wzorzec/małe: FP 20/20, konstrukcja/małe 7/12. Z1 70% < 80%. Poprawka na fazę 2: wzorzec z wielu czystych obrazów (plan w wynik_bazowy.md) — strojenie, nie nowa funkcja.
