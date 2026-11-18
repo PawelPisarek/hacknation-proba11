@@ -24,14 +24,14 @@ Nie ma: listy miejsc, zapisu, progu odcinania, przycisków „Poprzednia / Nast�
 
 ### Definicje do pomiaru
 - **Konstrukcja / ładunek**: strefa obrazu, w której generator umieścił dodatek — `miejsce` w `prawda.json`: „konstrukcja” = ramy, podwozie i pas dolny (`strefy["konstrukcja"]` w `rtg/generator.py`), „ladunek” = obszar palet.
-- **Mały / duży**: `rozmiar` = „maly”, gdy pole bbox dodatku < 0,1% powierzchni obrazu (np. < 360 px² dla 1000×360), inaczej „duzy”. Próg to założenie robocze bez źródła; zapisuje go generator.
+- **Mały / duży**: `rozmiar` = „maly”, gdy pole bbox dodatku < 0,1% powierzchni obrazu (np. < 360 px² dla 1000×360), inaczej „duzy”. Próg to założenie robocze bez źródła i obowiązuje do odpowiedzi Artura na P22. Pole `rozmiar` zapisuje generator w `prawda.json`; `ocena` je tylko czyta i niczego nie liczy sama.
 - `prawda.json`: pola `miejsce` (już jest) i `rozmiar` (do dopisania) przy każdym dodatku — ustalenie Szefa 08:46.
 
 ## 3. Pokaz (do 2 min)
 Ekran A czysta (≈25 s) → ekran A z dodatkiem, przełącznik wzorzec/badany (≈45 s) → ekran B, liczby (≈10 s) + zdanie o kierunku (przeróbki konstrukcji, tylko w prezentacji).
 
 ## 4. Wejście i wyjście
-- **Wejście**: pary `*.bmp` (wzorzec, badany) lub folder; wzorce czyste do nauki (pkt 5). Duże pliki ~50 MB, przetwarzanie partiami.
+- **Wejście**: pary `*.bmp` (wzorzec, badany) lub folder; pary w folderze rozpoznajemy po nazwach `*_wzorzec.bmp` / `*_badany.bmp`; wzorce czyste do nauki (pkt 5). Duże pliki ~50 MB, przetwarzanie partiami.
 - **Wyjście na obraz**: PNG z ramkami + JSON (`ramki[]: bbox, pewność, numer`, `ocena`, `czas_s`, `prog`); na partię: zbiorczy HTML + JSON (liczby jak w ekranie B).
 - Wzorzec wybiera system (najbliższy z wzorców czystych); model uczony na wielu czystych.
 
@@ -39,15 +39,17 @@ Ekran A czysta (≈25 s) → ekran A z dodatkiem, przełącznik wzorzec/badany (
 - `python -m rtg generuj KATALOG [--czyste N --dodatek N --ziarno S --trudny --pusty-wzorzec]` — syntetyczny zbiór + `prawda.json`.
 - `python -m rtg porownaj WZORZEC BADANY [--raport KATALOG]` — jedna para.
 - `python -m rtg ocena KATALOG [--k K --json PLIK]` — FP/FN osobno.
-- `python -m rtg porownaj --folder KATALOG` — tryb folderu bez człowieka, raport partii (ustalone, Szef 08:46). Gdy w folderze jest `prawda.json`, raport dokłada FP, FN i tabelę miejsce × rozmiar.
+- `python -m rtg porownaj --folder KATALOG [--wzorce KATALOG]` — tryb folderu bez człowieka, raport partii (ustalone, Szef 08:46). Pary z nazw `*_wzorzec.bmp` / `*_badany.bmp`; opcjonalne `--wzorce` daje pulę czystych wzorców, bez niego obowiązuje para z nazwy. Każdy podkatalog KATALOGU to osobny zbiór, a jego nazwa (łatwy / trudny / pusty wzorzec) jest podpisem w raporcie. Gdy w folderze jest `prawda.json`, raport dokłada FP, FN i tabelę miejsce × rozmiar.
 
 ## 6. Miary
+**Próg odcinania** to minimalna pewność ramki, w % (skala 0–100%); ramki poniżej są odrzucane. `k` to parametr wewnętrzny detektora. Oba trafiają do JSON (`prog_pewnosci`, `k`), a w raporcie partii widać próg.
 FP i FN **osobno**, na obraz, jak w `rtg/ocena.py`; roboczo każdy ≤ 10% (bez źródła). Trafienia dodatków wg miejsca × rozmiaru. Pomiar na zbiorach trudnym i z pustym wzorcem.
 
 ## 7. Testy akceptacji
-1. `generuj --trudny` i `--pusty-wzorzec`, `ocena`: FP ≤ 10% i FN ≤ 10% osobno na każdym (Z2). Dziś niespełnione: FP 100% na trudnym.
+0. **Zbiory testów:** 20 czystych + 20 z dodatkiem. Ziarno 0 do strojenia, ziarno 1 do oceny; na ziarnie 1 nie stroimy.
+1. `generuj --trudny` i `--pusty-wzorzec` (ziarno 1), `ocena`: FP ≤ 10% i FN ≤ 10% osobno na każdym (Z2). Dziś niespełnione: FP 100% na trudnym.
 2. Czysty obraz → „zielona”, 0 ramek; obraz z dodatkiem → „do sprawdzenia”, ≥ 1 ramka na dodatku.
-3. Tabela trafień miejsce × rozmiar; komórka „mały w konstrukcji” ≥ 80% (Z1, założenie).
+3. Tabela trafień miejsce × rozmiar; komórka „mały w konstrukcji” ≥ 80% (Z1, założenie), liczona łącznie na zbiorze trudnym i z pustym wzorcem. Słabość pokazana jawnie w raporcie (P21).
 4. Nauka z wielu czystych (Z3): FP i FN liczone osobno: żaden nie jest gorszy od najprostszego sposobu, a co najmniej jeden jest niższy o ≥ 20% względnie (gdy wartość bazowa > 0); próg 20% to założenie bez źródła.
 5. Czas analizy: < 1 min na obraz ~50 MB na zwykłym laptopie z CPU; ≥ 60 s → zmniejszenie skali i zapis założenia (Z5). Baza: 1,7 s liczenie, ~4 s z wczytaniem.
 6. Próba z człowiekiem na makiecie (Artur/Paweł): „czy naczepa jest czysta i gdzie jest dodatek?” — poprawna odpowiedź w < 10 s bez wyjaśnień (Z4).
@@ -57,6 +59,6 @@ FP i FN **osobno**, na obraz, jak w `rtg/ocena.py`; roboczo każdy ≤ 10% (bez 
 10. Uruchomienie z README przez osobę z zewnątrz; licencja MIT; w repo, makiecie i slajdach tylko dane syntetyczne.
 
 ## 8. Ryzyka i kryteria (z `/discover`)
-Najryzykowniejsze założenia: Z1 (syntetyczne dodatki wystarczająco podobne do prawdziwych i trafiane, także małe w konstrukcji), Z2 (różnica po rejestracji daje mało alarmów na trudnym zbiorze). Reguły porażki i ujednolicenie zapisów — `docs/pm/03-write-prd.md`, sekcja Ryzyka. Zmiana metody (PatchCore/PaDiM) tylko gdy pomiar na zbiorze trudnym tego wymaga.
+Najryzykowniejsze założenia (potwierdzone przez Artura: Z2 w P20, Z1 w P21): Z1 (syntetyczne dodatki wystarczająco podobne do prawdziwych i trafiane, także małe w konstrukcji), Z2 (różnica po rejestracji daje mało alarmów na trudnym zbiorze). Reguły porażki i ujednolicenie zapisów — `docs/pm/03-write-prd.md`, sekcja Ryzyka. Zmiana metody (PatchCore/PaDiM) tylko gdy pomiar na zbiorze trudnym tego wymaga.
 
 <!-- skill: przeplywy-pm -->
