@@ -43,3 +43,4 @@ P7 08:20 odpowiedź: tuż po prześwietleniu jednej naczepy, ALE praca partiami 
 P8 08:20 odpowiedź: wybrane 1 i 3 (ramki na obrazie + jedna ocena naczepy); z odrzuconych w części 9: przeliczenie folderu bez człowieka, bez interfejsu, wynik w raporcie (skalowalność 30% oceny) — Artur w pokoju
 P9 08:22 odpowiedź: obraz z ramkami, nad nim jedna linia z oceną naczepy (zielona / do sprawdzenia, liczba miejsc) — to pomysł 3, nie osobny ekran; pewność przy ramce tak — Artur w pokoju
 P10 08:23 odpowiedź: zgoda, same dodatki (to mierzy test); przeróbki konstrukcji tylko wspomnieć w prezentacji jako kierunek (zadanie je wymienia), nie budujemy — Artur w pokoju
+P11 08:25 odpowiedź: para (wzorzec + badany) jako podstawa na ekranie; wg pkt 5 zadania narzędzie ma się NAUCZYĆ z wielu czystych obrazów wzorcowych — „wzorzec” to też model nauczony z czystych, pod spodem; wzorzec wybiera system (rekomendacja przyjęta) — Artur w pokoju
