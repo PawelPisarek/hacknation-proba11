@@ -73,3 +73,6 @@ P19 08:37 odpowiedź: zgoda, zielona tylko przy zerze zaznaczeń; próg odcinani
 P18 08:44 bez odpowiedzi Paweł → rekomendacja: puszczamy 1b dalej do /write-prd; 2 braki (zapis miar FP/FN w 02) jako ryzyka w specu, Projektant ujednolica zapis do decyzji 08:33
 08:46 Szef: tryb folderu = `python -m rtg porownaj --folder KATALOG` (zgoda na propozycję Projektanta); generator dopisuje do prawda.json pola `miejsce` i `rozmiar` dodatku.
 08:46 Szef: krok 2 (/write-prd) recenzja przejścia R1 → Analityk (03 vs 02).
+08:47 Szef: krok 2 R1 — 5 braków (Analityk) → Projektant poprawia 03 i spec.
+08:47 Szef: próg odcinania pokazujemy w raporcie z partii (P19), nie na głównym ekranie; główny ekran = dokładnie 4 elementy z 08:38 (bez Poprzednia/Następna).
+08:47 Szef: liczby udawane w makiecie podpisane, z którego zbioru są (łatwy / trudny); w raporcie partii pokazujemy oba zbiory.
