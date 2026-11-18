@@ -71,3 +71,17 @@ Ustalenie z Arturem (P11, pkt 5 zadania): pod spodem „wzorzec” może być mo
 2. Model: wszystkie czyste wyrównane do wspólnej geometrii (u(x) jak w v1), na piksel/kafelek mediana i rozrzut (MAD) tłumienia konstrukcji; ładunek odróżniony jako to, co zmienne między czystymi.
 3. Detekcja: badany wyrównany do modelu, alarm gdy tłumienie > mediana + k·rozrzut poza obszarem ładunku; w ładunku — porównanie v1.
 4. Pusty wzorzec przestaje być problemem, bo konstrukcja jest znana z wielu skanów, a ładunek modelowany osobno.
+
+## Zbiory z wymuszonymi małymi dodatkami (pomiar Z1)
+
+Generator: `--male 0.5` (około połowy dodatków ma pole < 0,1% obrazu; pole bboxa losowane z 30–80% progu). Przy `--male 0` stare ziarna dają bajt w bajt te same zbiory (sprawdzone na trudny test).
+Zbiory: `trudny_male_dev` / `pusty_male_dev` (ziarno 2), `trudny_male_test` / `pusty_male_test` (ziarno 3), po 20 czystych + 20 z dodatkiem:
+`python -m rtg generuj dane/gen/trudny_male_test --ziarno 3 --trudny --male 0.5` (dla pustego: `--pusty-wzorzec`).
+Metoda v1 bez strojenia, test puszczony raz (09:17).
+
+| zbiór | v1 |
+|---|---|
+| **trudny, małe, test** | FP 3/20 (15%) \| FN 3/20 (15%) \| trafione 27/31 (konstr. 16/18, ład. 11/13, małe 14/17, duże 13/14; konstr./małe 7/8, konstr./duże 9/10, ład./małe 7/9, ład./duże 4/4) \| fałszywe ramki 5 \| 0,63 s/obraz |
+| **pusty wzorzec, małe, test** | FP 20/20 (100%) \| FN 2/20 (10%) \| trafione 25/32 (konstr. 15/22, ład. 10/10, małe 13/18, duże 12/14; konstr./małe 7/12, konstr./duże 8/10, ład./małe 6/6, ład./duże 4/4) \| fałszywe ramki 187 \| 0,60 s/obraz |
+
+**Z1 (mały w konstrukcji ≥ 80%, trudny + pusty łącznie): 14/20 = 70% — nie spełnione.** Na pustym wzorcu trafienia są zawyżone przez 187 fałszywych ramek (trafienie przypadkiem).

@@ -119,13 +119,20 @@ def pojazd(rng: np.random.Generator, h: int, w: int, z_ladunkiem: bool) -> Pojaz
     return Pojazd(A, strefy, A_kon, palety, (x0 + int(10 * s), x1 - int(10 * s)))
 
 
-def dodatek(rng, A_shape, strefa, s):
-    """Maska dodatku (prostokąt albo nieregularny kształt) w strefie; zwraca (maska, tłumienie)."""
+def dodatek(rng, A_shape, strefa, s, maly=False):
+    """Maska dodatku (prostokąt albo nieregularny kształt) w strefie; zwraca (maska, tłumienie).
+    maly: wymuszony „mały” dodatek — pole bboxa 30–80% progu MALY_POLE (spec §2)."""
     h, w = A_shape
     zy0, zy1, zx0, zx1 = strefa
     zh, zw = zy1 - zy0, zx1 - zx0
-    bw = int(min(zw * 0.8, w * rng.uniform(0.02, 0.07)))
-    bh = int(min(zh * 0.8, max(4 * s, bw * rng.uniform(0.3, 1.2))))
+    if maly:
+        pole = rng.uniform(0.3, 0.8) * MALY_POLE * w * h
+        proporcja = rng.uniform(0.5, 2.0)
+        bw = int(min(zw * 0.8, np.sqrt(pole * proporcja)))
+        bh = int(min(zh * 0.8, pole / max(bw, 1)))
+    else:
+        bw = int(min(zw * 0.8, w * rng.uniform(0.02, 0.07)))
+        bh = int(min(zh * 0.8, max(4 * s, bw * rng.uniform(0.3, 1.2))))
     bw, bh = max(bw, 4), max(bh, 4)
     py = int(rng.integers(zy0, max(zy0 + 1, zy1 - bh)))
     px = int(rng.integers(zx0, max(zx0 + 1, zx1 - bw)))
@@ -208,7 +215,7 @@ def _artefakty(rng, I, szum):
     return I * wie[:, None].astype(np.float32) * kol[None, :].astype(np.float32)
 
 
-def _para_trudna(rng, katalog, pid, rodzaj, h, w, s, pusty_wzorzec):
+def _para_trudna(rng, katalog, pid, rodzaj, h, w, s, pusty_wzorzec, male=0.0):
     p = pojazd(rng, h, w, z_ladunkiem=pusty_wzorzec or bool(rng.random() < 0.7))
     sz = rng.uniform(1.5, 3.5)
     Iw, _ = renderuj(rng, p.A_kon if pusty_wzorzec else p.A, 0, 0, 1.0, sz)
@@ -220,7 +227,7 @@ def _para_trudna(rng, katalog, pid, rodzaj, h, w, s, pusty_wzorzec):
         for _ in range(int(rng.integers(1, 3))):
             miejsce = "konstrukcja" if rng.random() < 0.5 else "ladunek"
             strefa = p.strefy[miejsce][int(rng.integers(len(p.strefy[miejsce])))]
-            m, t = dodatek(rng, p.A.shape, strefa, s)
+            m, t = dodatek(rng, p.A.shape, strefa, s, maly=bool(male) and bool(rng.random() < male))
             if miejsce == "ladunek":  # dodatek jedzie razem ze swoją paletą
                 xs = np.nonzero(m.any(axis=0))[0]
                 m = np.roll(m, _przes_ladunku(przes, xs.min(), xs.max()), axis=1)
@@ -250,9 +257,10 @@ def _para_trudna(rng, katalog, pid, rodzaj, h, w, s, pusty_wzorzec):
 
 
 def generuj_zbior(katalog: str | Path, n_czystych: int, n_dodatek: int, h: int = 360, w: int = 1000,
-                  ziarno: int = 0, trudny: bool = False, pusty_wzorzec: bool = False) -> dict:
+                  ziarno: int = 0, trudny: bool = False, pusty_wzorzec: bool = False, male: float = 0.0) -> dict:
     """trudny: ładunek inaczej ułożony, rozciągnięcie w osi jazdy, pasy detektora.
-    pusty_wzorzec: wzorzec bez ładunku, badany z ładunkiem (dodatki w konstrukcji i w ładunku)."""
+    pusty_wzorzec: wzorzec bez ładunku, badany z ładunkiem (dodatki w konstrukcji i w ładunku).
+    male: udział dodatków wymuszonych jako „małe” (0 = jak dotąd; przy 0 ziarna dają te same zbiory)."""
     if pusty_wzorzec:
         trudny = True
     katalog = Path(katalog)
@@ -264,7 +272,7 @@ def generuj_zbior(katalog: str | Path, n_czystych: int, n_dodatek: int, h: int =
     for i, rodzaj in enumerate(rodzaje):
         pid = f"para_{i:03d}"
         if trudny:
-            pary.append(_para_trudna(rng, katalog, pid, rodzaj, h, w, s, pusty_wzorzec))
+            pary.append(_para_trudna(rng, katalog, pid, rodzaj, h, w, s, pusty_wzorzec, male))
             continue
         p = pojazd(rng, h, w, z_ladunkiem=bool(rng.random() < 0.7))
         Iw, _ = renderuj(rng, p.A, 0, 0, 1.0, rng.uniform(1.5, 3.5))
@@ -275,7 +283,7 @@ def generuj_zbior(katalog: str | Path, n_czystych: int, n_dodatek: int, h: int =
             for _ in range(int(rng.integers(1, 3))):
                 miejsce = "konstrukcja" if rng.random() < 0.5 else "ladunek"
                 strefa = p.strefy[miejsce][int(rng.integers(len(p.strefy[miejsce])))]
-                m, t = dodatek(rng, p.A.shape, strefa, s)
+                m, t = dodatek(rng, p.A.shape, strefa, s, maly=bool(male) and bool(rng.random() < male))
                 A_b[m] += t
                 maski.append(m)
                 miejsca.append(miejsce)
@@ -291,6 +299,6 @@ def generuj_zbior(katalog: str | Path, n_czystych: int, n_dodatek: int, h: int =
         pary.append({"id": pid, "wzorzec": f"{pid}_wzorzec.bmp", "badany": f"{pid}_badany.bmp",
                      "etykieta": rodzaj, "dodatki": [{"bbox": b, "miejsce": m, "rozmiar": rozmiar_dodatku(b, w, h)} for b, m in zip(bboxy, miejsca)],
                      "przesuniecie": [round(dx, 2), round(dy, 2)]})
-    prawda = {"rozmiar": [w, h], "ziarno": ziarno, "trudny": trudny, "pusty_wzorzec": pusty_wzorzec, "pary": pary}
+    prawda = {"rozmiar": [w, h], "ziarno": ziarno, "trudny": trudny, "pusty_wzorzec": pusty_wzorzec, "male": male, "pary": pary}
     (katalog / "prawda.json").write_text(json.dumps(prawda, ensure_ascii=False, indent=1))
     return prawda
