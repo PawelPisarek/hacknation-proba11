@@ -1,5 +1,5 @@
 # Stan — próba 11
-Kamień: makieta pod gh-pages (koniec próby po krytyku makiety). Teraz 08:12.
+Kamień: makieta pod gh-pages (koniec próby po krytyku makiety). Teraz 08:14.
 
 | zadanie | kto | status |
 |---|---|---|
@@ -10,4 +10,4 @@ Kamień: makieta pod gh-pages (koniec próby po krytyku makiety). Teraz 08:12.
 | 1b /discover, 2 /write-prd | Projektant | czeka na pętlę 1a |
 | makieta + krytyk | Programista, Analityk | czeka na spec |
 
-Otwarte pytania: P1 (Paweł, kto jest kim), P2, P3 (Artur, Projektant w pokoju).
+Otwarte pytania: P1 (Paweł, kto jest kim). P2, P3 — odpowiedział Artur.
