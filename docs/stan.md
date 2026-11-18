@@ -10,8 +10,8 @@ Kamień: makieta pod gh-pages (koniec próby po krytyku makiety). Teraz 08:52.
 | 1a /competitive-analysis → docs/pm/01 | Projektant | zamknięte (3 rundy) |
 | przesłuchanie Artura (pokój Produkt) | Projektant | zlecone |
 | 1b /discover → docs/pm/02 | Projektant | zamknięte (3 rundy, 2 braki → ryzyka, P18 rekomendacja) |
-| 2 /write-prd | Projektant | przejście zamknięte (3 rundy); odbiorca R2 → Programista |
-| makieta + krytyk | Programista, Analityk | czeka na spec |
+| 2 /write-prd | Projektant | zamknięte (przejście 3 rundy, odbiorca 2 rundy) |
+| makieta (gh-pages) + krytyk | Programista, Analityk | makieta zlecona |
 
 Otwarte pytania: P22 mały/duży (Artur, Projektant). P17, P19, P20 odpowiedź. P1, P4, P18 → rekomendacja.
 Zadania kryterium: docs/zadania/01-kryterium-skutecznosc-fp.md (ntfy 202).
