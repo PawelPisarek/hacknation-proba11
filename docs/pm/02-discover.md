@@ -14,7 +14,7 @@
 
 ## Czego nie wiem o produkcie
 Odpowiedziane przez Artura w pokoju (08:20–08:28): P5–P13 (patrz „Ustalone"). Zostaje:
-- P14 — który z trzech szkiców ekranu (moment (c), przed `/write-prd`) — czeka; rekomendacja: wariant 1 z paskiem oceny nad obrazem.
+- P14 — który z trzech szkiców ekranu (moment (c), przed `/write-prd`) — odpowiedź: wariant 1 z przełącznikiem „wzorzec / badany” (Artur, P14).
 - P15 (pyt. 5 z pliku 01) — odpowiedź Artura 08:32: ramka zostaje w raporcie, bez odrzucania przez operatora (pomysł 6 poza MVP). Zamknięte.
 
 ## Użytkownik, problem, chwile użycia
@@ -55,7 +55,7 @@ Z trzech perspektyw: PM, projektant (UX), inżynier.
 | Z6 | Oba błędy (FP i FN) liczą się równo (P3): dwie osobne miary z równymi progami, bez przechyłu w stronę mniejszej liczby ramek | wartość | wysoki | niskie |
 | Z7 | Dane KAS nie trafią do repo, slajdów ani makiety | ochrona danych | wysoki | niskie |
 
-**Najryzykowniejsze (do potwierdzenia przez Artura, czeka):** Z1 i Z2. Rekomendacja: potwierdzamy oba; sprawdzamy je pierwsze.
+**Najryzykowniejsze (potwierdzone przez Artura w pokoju, P20 i P21):** Z2 pierwsze (fałszywe alarmy na czystych = połowa 40% oceny), Z1 drugie (małe dodatki w konstrukcji; słabość jawnie w raporcie).
 
 ### Eksperymenty
 Zbiór pomiarowy dla Z1 i Z2: **trudny** (`generuj … --trudny`) i wariant z pustym wzorcem (`--pusty-wzorzec`), nie zbiór łatwy; ocena skryptem oceny z `prawda.json`. Miary jak w skrypcie oceny: **FP** = odsetek czystych obrazów z jakąkolwiek ramką; **FN** = odsetek obrazów z dodatkiem, w których nie trafiono żadnego dodatku. Liczymy je osobno; roboczy próg jest równy dla obu: **każdy ≤ 10%** (założenie bez źródła; oba błędy równo, P3). Dodatkowo raportujemy trafienia dodatków w podziale na miejsce (konstrukcja / ładunek) i rozmiar (mały / duży) — pod P5.

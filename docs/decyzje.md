@@ -89,3 +89,5 @@ P20 08:51 odpowiedź: tak, to pierwsze ryzyko; fałszywe alarmy na czystych to p
 08:52 Szef: `porownaj --folder` — pary po nazwach `*_wzorzec.bmp` / `*_badany.bmp`; opcjonalnie `--wzorce KATALOG` (pula czystych); każdy podkatalog = osobny zbiór, nazwa = podpis w raporcie.
 08:52 Szef: testy akceptacji — 20 czystych + 20 z dodatkiem na zbiór; ziarno 0 strojenie, ziarno 1 ocena (bez strojenia); test „mały w konstrukcji” liczony łącznie na trudnym i pustym wzorcu.
 08:52 Szef: próg odcinania = minimalna pewność ramki w %; `k` parametr wewnętrzny; oba w JSON.
+P21 08:52 Artur: Drugie ryzyko do sprawdzenia: czy narzędzie znajdzie małe dodatki w konstrukcji (osobno małe i duże)? (rekomendacja: tak, a słabość jawnie w raporcie) — czeka
+P21 08:53 odpowiedź: tak, to sedno zadania — obecne narzędzie KAS zawodzi na małych ilościach w konstrukcji; jawna słabość w raporcie — Artur w pokoju
