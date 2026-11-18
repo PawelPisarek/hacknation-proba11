@@ -93,3 +93,4 @@ P21 08:52 Artur: Drugie ryzyko do sprawdzenia: czy narzędzie znajdzie małe dod
 P21 08:53 odpowiedź: tak, to sedno zadania — obecne narzędzie KAS zawodzi na małych ilościach w konstrukcji; jawna słabość w raporcie — Artur w pokoju
 08:53 Szef: odbiorca R1 poprawione przez Projektanta (spec); recenzja odbiorcy R2 → Programista.
 08:53 Szef: recenzja odbiorcy R2 — brak braków; spec do budowy. Pole JSON: prog_pewnosci (Programista). Makieta → Programista.
+08:58 Szef: makieta R1 na gh-pages (200), zrzuty docs/makieta/ekran-a.png, ekran-b.png; krytyk R1 → Analityk.
