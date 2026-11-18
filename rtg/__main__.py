@@ -9,12 +9,21 @@ import time
 from pathlib import Path
 
 
+def _metoda(nazwa):
+    if nazwa == "v0":
+        from .detektor import wykryj
+    else:
+        from .detektor_v1 import wykryj
+    return wykryj
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="rtg", description="Porównanie obrazów RTG: wzorzec vs badany")
     sub = ap.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("porownaj", help="porównaj parę obrazów i zapisz raport")
     p.add_argument("wzorzec"); p.add_argument("badany")
     p.add_argument("--raport", default="wyniki"); p.add_argument("--k", type=float, default=4.0)
+    p.add_argument("--metoda", choices=["v0", "v1"], default="v1", help="v0 = różnica po przesunięciu, v1 = odporna (domyślna)")
     g = sub.add_parser("generuj", help="syntetyczny zbiór par .bmp + prawda.json")
     g.add_argument("katalog")
     g.add_argument("--czyste", type=int, default=20); g.add_argument("--dodatek", type=int, default=20)
@@ -24,11 +33,12 @@ def main(argv=None):
     g.add_argument("--pusty-wzorzec", action="store_true", help="wzorzec bez ładunku, badany z ładunkiem (implikuje --trudny)")
     o = sub.add_parser("ocena", help="FP/FN na zbiorze z prawda.json")
     o.add_argument("katalog"); o.add_argument("--k", type=float, default=4.0); o.add_argument("--json")
+    o.add_argument("--metoda", choices=["v0", "v1"], default="v1")
     a = ap.parse_args(argv)
 
     if a.cmd == "porownaj":
-        from .detektor import wykryj
         from .obrazy import wczytaj
+        wykryj = _metoda(a.metoda)
         from .raport import zapisz
         t = time.perf_counter()
         B = wczytaj(a.badany)
@@ -43,7 +53,7 @@ def main(argv=None):
         print(f"wygenerowano {len(pr['pary'])} par w {a.katalog}")
     elif a.cmd == "ocena":
         from .ocena import linia, ocen
-        w = ocen(a.katalog, k=a.k)
+        w = ocen(a.katalog, metoda=_metoda(a.metoda), k=a.k)
         if a.json:
             Path(a.json).write_text(json.dumps(w, ensure_ascii=False, indent=1))
         print(linia(w))

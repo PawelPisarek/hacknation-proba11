@@ -102,3 +102,6 @@ P21 08:53 odpowiedź: tak, to sedno zadania — obecne narzędzie KAS zawodzi na
 - 09:05 Szef: duża liczba „dodatki znalezione” zostaje w dodatkach (Artur P13), ale kolor bierze z celu FN ≤ 10% na obraz (zielona, gdy cel spełniony); wiersze dublujące duże liczby chowamy pod „szczegóły”.
 - 09:07 Szef: poprawki R2 makiety wypchnięte (main 15a8ee8, gh-pages 3e25b71, HTTP 200); krytyk R3 (ostatnia) → Analityk.
 - 09:08 Szef: krytyk makiety R3 9/10 — „brak braków zmieniających zakres lub kryteria”; makieta zamknięta (3 rundy: 6, 8, 9). Koniec próby.
+- 09:10 Programista: rozmiar dodatku w ocenie (decyzja 08:32/08:33 bez definicji) — „mały” = dłuższy bok bboxa < 4% szerokości obrazu (przy 1000 px < 40 px), „duży” — pozostałe. Założenie techniczne, łatwe do zmiany (`MALY` w rtg/ocena.py).
+- 09:10 Programista: metoda v1 (rtg/detektor_v1.py) domyślna w CLI; v0 dostępna przez `--metoda v0`. Strojenie tylko na dev (ziarno 0); test uruchomiony raz.
+- 09:10 Programista: wariant „wzorzec = model z wielu czystych” (P11) nie zmieścił się w rundzie — zapisany jako następny krok w docs/wynik_bazowy.md.
