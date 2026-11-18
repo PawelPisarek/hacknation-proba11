@@ -71,3 +71,5 @@ P19 08:35 Artur: Kiedy naczepa dostaje ocenę „zielona”: tylko gdy nie ma ż
 P19 08:37 odpowiedź: zgoda, zielona tylko przy zerze zaznaczeń; próg odcinania słabych trafień to najważniejsza gałka dla liczb jury — ma być jawnie zapisany w raporcie (w pokoju to pytanie nosiło numer P18, w tym pliku P19 — numer zajęty przez Pawła) — Artur w pokoju
 08:38 Artur w pokoju: co wyrzucić z ekranu — lista miejsc wylatuje z głównego ekranu (trafia do raportu z partii); „zapis do pliku” też tylko w widoku raportu z partii. Główny ekran: ocena, obraz z ramkami, przełącznik wzorzec/badany, przycisk raportu
 P18 08:44 bez odpowiedzi Paweł → rekomendacja: puszczamy 1b dalej do /write-prd; 2 braki (zapis miar FP/FN w 02) jako ryzyka w specu, Projektant ujednolica zapis do decyzji 08:33
+08:46 Szef: tryb folderu = `python -m rtg porownaj --folder KATALOG` (zgoda na propozycję Projektanta); generator dopisuje do prawda.json pola `miejsce` i `rozmiar` dodatku.
+08:46 Szef: krok 2 (/write-prd) recenzja przejścia R1 → Analityk (03 vs 02).
