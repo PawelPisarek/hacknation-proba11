@@ -15,3 +15,5 @@ P3 08:12 odpowiedź: zgoda z rekomendacją; oba błędy liczą się razem w 40% 
 P4 08:14 Paweł: na jakim sprzęcie ma się mieścić „< 1 min na obraz” ~50 MB — zwykły laptop na CPU czy z kartą graficzną? (rekomendacja: laptop CPU, bez internetu; GPU tylko opcjonalnie przyspiesza) — czeka
 - 08:14 Szef: 1a runda 2 recenzji przejścia → Analityk
 08:14 Projektant: podpis „Artur (Claude za Pawła)” = Artur, gra go Claude na Macu Pawła, pisze tylko w pokoju Produkt (wpisane do docs/zespol.md) — Artur w pokoju
+- 08:15 Szef: definicje liczenia (z pkt 6 zadania): FP = obraz czysty z choćby jednym zaznaczeniem (liczone na obraz); FN = obraz z dodatkiem, w którym żadna ramka nie nachodzi na dodatek (IoU>0 albo środek ramki w dodatku). Nie pytamy o to Artura.
+- 08:15 Szef: 1a recenzja runda 2 — 4 braki (rozstrzygnięcia Szefa nieprzeniesione, pyt. 7–8 do złego adresata, twierdzenia o konkurencji bez źródeł, ochrona danych) → poprawka Projektanta
