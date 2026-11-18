@@ -20,6 +20,15 @@ def test_sciezka():
         w = ocen(d)
         assert w["n_czystych"] == 3 and w["n_dodatek"] == 3
         assert w["FP"] + w["FN"] <= 2, w
+    with tempfile.TemporaryDirectory() as d:  # trudny i pusty wzorzec: generują się, bboxy w obrazie
+        for flaga in ("--trudny", "--pusty-wzorzec"):
+            main(["generuj", d, "--czyste", "1", "--dodatek", "3", "--szer", "500", "--wys", "180", flaga])
+            pr = json.loads((Path(d) / "prawda.json").read_text())
+            for p in pr["pary"]:
+                for dd in p["dodatki"]:
+                    x0, y0, x1, y1 = dd["bbox"]
+                    assert 0 <= x0 <= x1 < 500 and 0 <= y0 <= y1 < 180, dd
+            ocen(d)
 
 
 if __name__ == "__main__":
