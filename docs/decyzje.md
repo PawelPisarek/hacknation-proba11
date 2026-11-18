@@ -62,3 +62,5 @@ P16 08:32 Artur: Co dokładnie jest na ramce: sama ramka z pewnością (np. 87%)
 08:32 Szef: miary jak w skrypcie oceny — FP = odsetek czystych obrazów z ramką, FN = odsetek obrazów z dodatkiem bez trafienia; liczone osobno, robocze progi równe (każdy ≤ 10%, bez źródła).
 08:32 Szef: wynik trafień dodatków raportujemy też w podziale na miejsce (konstrukcja / ładunek) i rozmiar (mały / duży).
 1b recenzja przejścia runda 3 → Analityk (08:33)
+P16 08:33 odpowiedź: ramka = pewność i numer z listy miejsc, bez opisu słownego — Artur w pokoju
+P17 08:33 Artur: Raport z partii pokazujemy w pokazie jako jedną stronę z liczbami (ile czystych bez alarmu, ile dodatków znalezionych) i listą naczep z oceną — otwieraną z tego samego ekranu, czy jako osobny plik do otwarcia? (rekomendacja: strona otwierana z ekranu przyciskiem, ten sam plik da się też zapisać) — czeka
