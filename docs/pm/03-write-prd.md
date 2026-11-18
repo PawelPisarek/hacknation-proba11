@@ -30,10 +30,10 @@ Operator RTG SCS na granicy zewnętrznej UE (główny); jego przełożony (czyta
 
 ### 7. Solution
 **Co zobaczy i zrobi użytkownik (według Artura):**
-1. **Główny ekran** (wariant 1, P14): jeden obraz na całą szerokość (naczepa długa i płaska). Cztery elementy, nic więcej (08:38): ocena naczepy nad obrazem, obraz z ramkami, przełącznik „wzorzec / badany” (to samo miejsce, ta sama skala), przycisk raportu.
+1. **Główny ekran** (wariant 1, P14): jeden obraz na całą szerokość (naczepa długa i płaska). Dokładnie cztery elementy (08:38): ocena naczepy nad obrazem, obraz z ramkami, przełącznik „wzorzec / badany” (to samo miejsce, ta sama skala), przycisk raportu. Bez listy miejsc, zapisu, progu i przycisków nawigacji.
 2. **Ocena**: „zielona” tylko gdy zero zaznaczeń; w przeciwnym razie „do sprawdzenia” i liczba miejsc (P9, P19).
-3. **Ramka**: pewność i numer, bez opisu słownego (P16). Operator nie odrzuca ramek (P15). Próg odcinania słabych trafień jest jawnie pokazany na ekranie i zapisany w raporcie (P19).
-4. **Raport partii** otwierany przyciskiem z ekranu (P17): liczby (czyste bez alarmu, obrazy z alarmem, liczba ramek), lista naczep z oceną, **lista miejsc** i **zapis do pliku** — tylko tutaj. Gdy w folderze jest `prawda.json`, raport dokłada FP, FN i trafienia wg miejsca i rozmiaru.
+3. **Ramka**: pewność i numer, bez opisu słownego (P16). Operator nie odrzuca ramek (P15). Próg odcinania słabych trafień jest jawnie pokazany **w raporcie z partii** (nie na głównym ekranie; P19, Szef 08:47).
+4. **Raport partii** otwierany przyciskiem z ekranu (P17): liczby (czyste bez alarmu, obrazy z alarmem, liczba ramek), próg odcinania, oba zbiory (łatwy i trudny), lista naczep z oceną, **lista miejsc** i **zapis do pliku** — tylko tutaj. Gdy w folderze jest `prawda.json`, raport dokłada FP, FN i trafienia wg miejsca i rozmiaru.
 5. **Wzorzec**: system wybiera go sam (P11); pod spodem model uczony na wielu czystych obrazach (pkt 5), na ekranie para.
 6. **Partia bez człowieka**: CLI na folder, od początku (P7, P8, P12).
 
@@ -49,7 +49,7 @@ Kolejność (02, uporządkowana): (1) generator + ocena + tryb folderu z raporte
 
 ### Ryzyka
 - **Wynik bazowy** (`docs/wynik_bazowy.md`): na zbiorze trudnym FP 100% (setki fałszywych ramek na rozjechanych żebrach i przesuniętych paletach) — cele FP ≤ 10% wymagają rejestracji nieliniowej, wyrównania pasów detektora i porównania ładunku inaczej niż piksel w piksel. Reguła: jeśli po tych poprawkach FP lub FN nadal > 10% na zbiorze trudnym lub z pustym wzorcem, przechodzimy na mocniejszą metodę (PatchCore/PaDiM).
-- **Ujednolicenie zapisów z 02 (braki 1b, P18):** Z2 — FP i FN ≤ 10% osobno, na zbiorze trudnym i z pustym wzorcem; reguła porażki Z2: którykolwiek błąd > 10% → mocniejsza metoda. Z1 — FN ≤ 10% oraz tabela trafień wg miejsca × rozmiar; reguła porażki Z1: FN > 10% lub „mały w konstrukcji” poniżej założonych 80% → czulsze progi, wpis w ryzykach. Z3 — nauka z wielu czystych jest wymaganiem; eksperyment wybiera tylko sposób, kryterium: niższe FP i FN przy tym samym zbiorze (bez sumy). Z6 — oba błędy równe (P3), bez hierarchii; w 02 sformułowania „suma FP+FN” należy czytać jako dwie osobne miary.
+- **Ujednolicenie zapisów z 02 (braki 1b, P18) — poprawione w samym pliku 02:** jedna wersja Z2, Z1/Z3/Z6 bez „sumy FP+FN”. Poniżej treść ujednolicona: Z2 — FP i FN ≤ 10% osobno, na zbiorze trudnym i z pustym wzorcem; reguła porażki Z2: którykolwiek błąd > 10% → mocniejsza metoda. Z1 — FN ≤ 10% oraz tabela trafień wg miejsca × rozmiar; reguła porażki Z1: FN > 10% lub „mały w konstrukcji” poniżej założonych 80% → czulsze progi, wpis w ryzykach. Z3 — nauka z wielu czystych jest wymaganiem; eksperyment wybiera tylko sposób, kryterium: niższe FP i FN przy tym samym zbiorze (bez sumy). Z6 — oba błędy równe (P3), bez hierarchii.
 - Dane syntetyczne ≠ prawdziwe; progi 10% i 80% bez źródła.
 - Próg odcinania to najważniejsza gałka dla liczb jury (P19); zbyt wysoki zwiększa FN.
 - Ochrona danych: tylko obrazy syntetyczne w repo, slajdach, makiecie.

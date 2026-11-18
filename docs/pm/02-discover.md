@@ -48,11 +48,11 @@ Z trzech perspektyw: PM, projektant (UX), inżynier.
 | # | Założenie | Rodzaj | Wpływ | Ryzyko |
 |---|---|---|---|---|
 | Z1 | Syntetyczne dodatki są wystarczająco podobne do prawdziwych, a narzędzie trafia w dodatki (także małe, w konstrukcji — P5) | wykonalność | wysoki | wysokie |
-| Z2 | Różnica po rejestracji na zbiorze trudnym i z pustym wzorcem | FP ≤ 10% i FN ≤ 10% na obu zbiorach | FP lub FN > 10% na którymś → przejście na mocniejszą metodę (PatchCore/PaDiM) dla tego zbioru; próg dobieramy tak, by oba błędy były nie większe niż 10% |
+| Z2 | Różnica po rejestracji daje mało alarmów na czystych obrazach mimo różnic ustawienia | wykonalność | wysoki | wysokie |
 | Z3 | Wybrany sposób nauki z wielu czystych wzorców (pkt 5, P11 — wymaganie, nie do odrzucenia) działa lepiej niż najprostszy (np. średnia) | wykonalność | średni | średnie |
 | Z4 | Operator zrozumie pasek oceny + ramki bez szkolenia | użyteczność | średni | niskie |
 | Z5 | Analiza ≤ 1 min na obraz ~50 MB na sprzęcie jury (P4 czeka) | wykonalność | wysoki | średnie |
-| Z6 | Oba błędy (FP i FN) liczą się równo (P3), więc cel to minimum sumy błędów, bez przechyłu w stronę mniejszej liczby ramek | wartość | wysoki | niskie |
+| Z6 | Oba błędy (FP i FN) liczą się równo (P3): dwie osobne miary z równymi progami, bez przechyłu w stronę mniejszej liczby ramek | wartość | wysoki | niskie |
 | Z7 | Dane KAS nie trafią do repo, slajdów ani makiety | ochrona danych | wysoki | niskie |
 
 **Najryzykowniejsze (do potwierdzenia przez Artura, czeka):** Z1 i Z2. Rekomendacja: potwierdzamy oba; sprawdzamy je pierwsze.
@@ -63,7 +63,7 @@ Zbiór pomiarowy dla Z1 i Z2: **trudny** (`generuj … --trudny`) i wariant z pu
 |---|---|---|---|
 | Z2 | Różnica po rejestracji na zbiorze trudnym i z pustym wzorcem | łączny błąd (FP+FN) na obrazach ≤ 10% na obu zbiorach | > 10% na którymś → przejście na mocniejszą metodę (PatchCore/PaDiM) dla tego zbioru; próg dobieramy tak, by minimalizować sumę FP+FN |
 | Z1 | Dodatki o różnej wielkości i w różnych miejscach, ten sam zbiór trudny | FN ≤ 10% łącznie (jak Z2) oraz tabela trafień wg miejsca (konstrukcja/ładunek) × rozmiar (mały/duży); w komórce „mały w konstrukcji” trafienia ≥ 80% (założenie) | FN > 10% lub komórka < 80% → czulsze okno/mniejsze progi; wynik zapisany w ryzykach jako znana słabość |
-| Z3 | Porównanie sposobów nauki z N czystych (np. średnia vs model z rozkładem) — nauka zostaje, wybieramy sposób | wybrany sposób ma suma FP+FN niższa o ≥ 20% względnie od najprostszego | brak różnicy → zostaje najprostszy; nauka z wielu czystych pozostaje |
+| Z3 | Porównanie sposobów nauki z N czystych (np. średnia vs model z rozkładem) — nauka zostaje, wybieramy sposób | wybrany sposób ma FP i FN, każdy osobno, niższe o ≥ 20% względnie od najprostszego | brak różnicy → zostaje najprostszy; nauka z wielu czystych pozostaje |
 | Z5 | Pomiar czasu na obrazie ~50 MB | < 60 s | ≥ 60 s → zmniejszenie skali + zapis założenia |
 | Z4 | Próba z Arturem/Pawłem na makiecie: „czy naczepa jest czysta i gdzie jest dodatek?”, z przełącznikiem „wzorzec / badany” | poprawna odpowiedź w < 10 s bez wyjaśnień | błąd → przeprojektować pasek lub przełącznik |
 
