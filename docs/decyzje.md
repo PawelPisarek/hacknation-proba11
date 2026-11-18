@@ -58,3 +58,6 @@ P15 08:30 Artur: Co robi operator z ramką, której nie uważa za dodatek (np. e
 P15 08:32 odpowiedź: ramka zostaje w raporcie, bez odrzucania przez operatora — Artur w pokoju
 P16 08:32 Artur: Co dokładnie jest na ramce: sama ramka z pewnością (np. 87%), czy jeszcze krótki opis miejsca („lewy dolny róg, przy ramie”)? (rekomendacja: ramka z pewnością i numerem na liście; opis słowny odpada — P9 wybrał pewność, opis nie jest potrzebny do liczb jury) — czeka
 1b recenzja przejścia runda 2 → Analityk (08:32)
+1b recenzja runda 2: 3 braki (przeróbki otwarte/zamknięte, mianownik Z1/Z2, brak pomiaru małych dodatków w konstrukcji) → Projektant (08:32)
+08:32 Szef: miary jak w skrypcie oceny — FP = odsetek czystych obrazów z ramką, FN = odsetek obrazów z dodatkiem bez trafienia; liczone osobno, robocze progi równe (każdy ≤ 10%, bez źródła).
+08:32 Szef: wynik trafień dodatków raportujemy też w podziale na miejsce (konstrukcja / ładunek) i rozmiar (mały / duży).

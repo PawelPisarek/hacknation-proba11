@@ -9,9 +9,9 @@ Kamień: makieta pod gh-pages (koniec próby po krytyku makiety). Teraz 08:32.
 | 0P++ metoda odporna na trudny zbiór | Programista | zlecone |
 | 1a /competitive-analysis → docs/pm/01 | Projektant | zamknięte (3 rundy) |
 | przesłuchanie Artura (pokój Produkt) | Projektant | zlecone |
-| 1b /discover → docs/pm/02 | Projektant | recenzja 2 (Analityk) |
+| 1b /discover → docs/pm/02 | Projektant | poprawka po recenzji 2 (3 braki) |
 | 2 /write-prd | Projektant | czeka na pętlę 1b |
 | makieta + krytyk | Programista, Analityk | czeka na spec |
 
-Otwarte pytania: P15 (Artur, odrzucanie zaznaczeń). P1, P4 → rekomendacja.
+Otwarte pytania: brak (P15 odpowiedziane 08:32). P1, P4 → rekomendacja.
 Zadania kryterium: docs/zadania/01-kryterium-skutecznosc-fp.md (ntfy 202).
