@@ -8,3 +8,5 @@ P2 08:10 Artur: Kto dokładnie będzie używał narzędzia i w jakiej chwili pra
 P3 08:10 Artur: Co jest gorsze dla operatora: fałszywy alarm (zaznacza coś w czystej naczepie) czy przeoczenie (nie zaznacza ukrytego towaru)? (rekomendacja: przeoczenie jest gorsze, ale zadanie liczy oba błędy — ustawiamy czułość tak, by na czystych obrazach prawie nic nie zaznaczało) — czeka
 - 08:11 Szef: krok 1a (docs/pm/01) — znacznik skilla OK; recenzja przejścia runda 1 → Analityk
 - 08:12 Szef: 1a recenzja runda 1 — 5 braków (luki z materiałów, zakres vs test pkt 6, limit <1 min, papierosy, źródła macierzy) → poprawka Projektanta. Pkt 8 „Kryteria oceny” jest celowo pusty — nie jest brakiem.
+P2 08:12 odpowiedź: tak, operator RTG przy stanowisku. Poprawka: „< 1 minuta” z zadania to czas analizy jednego obrazu przez narzędzie, nie czas decyzji operatora; narzędzie działa samo, bez człowieka (pkt 3), operator ogląda gotowy raport z zaznaczeniami — Artur w pokoju
+P3 08:12 odpowiedź: zgoda z rekomendacją; oba błędy liczą się razem w 40% oceny, na czystych obrazach nie może nic zaznaczać — Artur w pokoju
