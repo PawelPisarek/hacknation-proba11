@@ -1,9 +1,9 @@
 """Skrypt oceny wg „Sposób testowania” (docs/zadanie.md §6).
 
 FP: obraz czysty, na którym metoda zgłosiła jakikolwiek obszar.
-FN: obraz z dodatkiem, w którym choć jeden dodatek nie został wskazany.
-Trafienie dodatku: ramka metody ma IoU>0 z bboxem prawdy (nakładają się)
-albo środek ramki prawdy leży w ramce metody (docs/decyzje.md).
+FN: obraz z dodatkiem, w którym żadna ramka nie trafia w dodatek (decyzja Szefa 08:15).
+Trafienie: ramka metody nakłada się na bbox prawdy (IoU>0) albo środek jednej leży w drugiej.
+Osobno: dodatki trafione (każdy dodatek z osobna) i fałszywe ramki na obrazach z dodatkiem.
 """
 from __future__ import annotations
 
@@ -20,8 +20,8 @@ def nakladaja(a, b):
 
 
 def trafiony(prawda_bbox, ramki):
-    cx, cy = (prawda_bbox[0] + prawda_bbox[2]) / 2, (prawda_bbox[1] + prawda_bbox[3]) / 2
-    return any(nakladaja(prawda_bbox, r) or (r[0] <= cx <= r[2] and r[1] <= cy <= r[3]) for r in ramki)
+    # środek jednej ramki w drugiej implikuje nakładanie, więc wystarcza IoU>0
+    return any(nakladaja(prawda_bbox, r) for r in ramki)
 
 
 def ocen(katalog: str | Path, metoda=wykryj, **param) -> dict:
@@ -45,8 +45,8 @@ def ocen(katalog: str | Path, metoda=wykryj, **param) -> dict:
             trafione += sum(traf)
             wszystkie += len(traf)
             falszywe_ramki += sum(not any(nakladaja(r, d["bbox"]) for d in p["dodatki"]) for r in ramki)
-            blad = "FN" if not all(traf) else ""
-            fn += not all(traf)
+            blad = "FN" if not any(traf) else ""
+            fn += not any(traf)
         szczegoly.append({"id": p["id"], "etykieta": p["etykieta"], "ramki": len(ramki), "blad": blad})
     return {"FP": fp, "n_czystych": n_cz, "FN": fn, "n_dodatek": n_dod,
             "dodatki_trafione": trafione, "dodatki": wszystkie, "falszywe_ramki_na_dodatkach": falszywe_ramki,
