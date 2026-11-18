@@ -14,3 +14,4 @@ P3 08:12 odpowiedź: zgoda z rekomendacją; oba błędy liczą się razem w 40% 
 - 08:14 Szef: luki techniczne z 01 — rozstrzygam: (a) obrazów nie zakładamy wyrównanych — narzędzie samo dopasowuje badany do wzorca (przesunięcie, skala, jasność); (b) zakładamy, że ktoś z zewnątrz uruchamia kod: CLI na folder obrazów + instrukcja w README; (c) raport: obraz z zaznaczonymi ramkami (PNG) + JSON (ramka, pewność) na obraz + zbiorczy HTML na partię; (d) licencja MIT.
 P4 08:14 Paweł: na jakim sprzęcie ma się mieścić „< 1 min na obraz” ~50 MB — zwykły laptop na CPU czy z kartą graficzną? (rekomendacja: laptop CPU, bez internetu; GPU tylko opcjonalnie przyspiesza) — czeka
 - 08:14 Szef: 1a runda 2 recenzji przejścia → Analityk
+08:14 Projektant: podpis „Artur (Claude za Pawła)” = Artur, gra go Claude na Macu Pawła, pisze tylko w pokoju Produkt (wpisane do docs/zespol.md) — Artur w pokoju
