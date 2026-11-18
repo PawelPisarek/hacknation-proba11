@@ -83,3 +83,4 @@ P20 08:49 Artur: Najpierw sprawdzamy, czy narzędzie nie alarmuje na czystych na
 08:49 Szef: raport partii (ekran B) pokazuje trzy zbiory: łatwy, trudny, pusty wzorzec — każdy podpisany.
 08:50 Szef: krok 2 R3 → Analityk.
 P20 08:51 odpowiedź: tak, to pierwsze ryzyko; fałszywe alarmy na czystych to połowa 40% oceny — Artur w pokoju
+08:51 Szef: krok 2 R3 — „brak braków zmieniających zakres lub kryteria” (Analityk); pętla zamknięta po 3 rundach. Recenzja odbiorcy → Programista.
