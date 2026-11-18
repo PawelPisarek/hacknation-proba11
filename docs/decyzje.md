@@ -35,3 +35,7 @@ P10 08:19 Artur: Czy narzędzie ma też szukać przeróbek konstrukcji i uszkodz
 P11 08:19 Artur: Co daje narzędziu wzorzec: jedną parę (wzorzec + badany), czy grupę kilku obrazów naraz? I kto wybiera wzorzec: system czy operator? (rekomendacja: para jako podstawa, grupa jako rozszerzenie; wzorzec wybiera system, operator może go zmienić) — czeka
 P12 08:19 Artur: Czy operator pracuje na jednym obrazie naraz, czy na kolejce wielu naczep? (rekomendacja: jeden obraz w pokazie, kolejka jako zbiorczy raport partii) — czeka
 P13 08:19 Artur: Jak ma wyglądać pokaz do 2 minut: jedna naczepa od wczytania do raportu, czy seria naczep z czystą i z dodatkiem? (rekomendacja: dwie naczepy pod rząd — czysta bez zaznaczeń, potem z dodatkiem z ramką) — czeka
+P5 08:20 odpowiedź: tak, drobne ukryte rzeczy w konstrukcji (zadanie: małe ilości papierosów w elementach konstrukcyjnych; obecne narzędzie tam zawodzi) — Artur w pokoju
+P6 08:20 odpowiedź: zgoda z rekomendacją (operator — podpowiedź gdzie patrzeć; przełożony — mniej zbędnych kontroli i zapis wyniku) — Artur w pokoju
+P7 08:20 odpowiedź: tuż po prześwietleniu jednej naczepy, ALE praca partiami bez człowieka (pkt 3, pliki ~50 MB) jest od początku, choćby prosta — nie „potem” — Artur w pokoju
+P8 08:20 odpowiedź: wybrane 1 i 3 (ramki na obrazie + jedna ocena naczepy); z odrzuconych w części 9: przeliczenie folderu bez człowieka, bez interfejsu, wynik w raporcie (skalowalność 30% oceny) — Artur w pokoju
