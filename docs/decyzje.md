@@ -46,3 +46,5 @@ P10 08:23 odpowiedź: zgoda, same dodatki (to mierzy test); przeróbki konstrukc
 P11 08:25 odpowiedź: para (wzorzec + badany) jako podstawa na ekranie; wg pkt 5 zadania narzędzie ma się NAUCZYĆ z wielu czystych obrazów wzorcowych — „wzorzec” to też model nauczony z czystych, pod spodem; wzorzec wybiera system (rekomendacja przyjęta) — Artur w pokoju
 P11 08:27 potwierdzenie: system wybiera wzorzec — Artur w pokoju
 P12 08:27 odpowiedź: w pokazie jeden obraz; partia (kolejka) przez zbiorczy raport z przeliczenia folderu — Artur w pokoju
+P13 08:28 odpowiedź: pokaz = dwie naczepy pod rząd (czysta bez zaznaczeń, potem z dodatkiem z ramką); na koniec ~10 s na raport z partii: ile czystych bez alarmu, ile dodatków znalezionych (liczby dla jury, 40%) — Artur w pokoju
+P14 08:28 Artur: Który z trzech szkiców ekranu bierzemy: (1) jeden obraz na cały ekran, (2) najpierw lista/kolejka naczep, (3) wzorzec i badany obok siebie? (rekomendacja: wariant 1 z paskiem oceny nad obrazem, partia jako osobny raport) — czeka
