@@ -105,3 +105,5 @@ P21 08:53 odpowiedź: tak, to sedno zadania — obecne narzędzie KAS zawodzi na
 - 09:10 Programista: rozmiar dodatku w ocenie (decyzja 08:32/08:33 bez definicji) — „mały” = dłuższy bok bboxa < 4% szerokości obrazu (przy 1000 px < 40 px), „duży” — pozostałe. Założenie techniczne, łatwe do zmiany (`MALY` w rtg/ocena.py).
 - 09:10 Programista: metoda v1 (rtg/detektor_v1.py) domyślna w CLI; v0 dostępna przez `--metoda v0`. Strojenie tylko na dev (ziarno 0); test uruchomiony raz.
 - 09:10 Programista: wariant „wzorzec = model z wielu czystych” (P11) nie zmieścił się w rundzie — zapisany jako następny krok w docs/wynik_bazowy.md.
+- 09:10 Szef: v1 domyślna w CLI (trudny test FP 20/20 → 5/20, FN 4/20 → 2/20; koszt: łatwy test FN 2 → 3); v0 pod `--metoda v0`. Przyjęte.
+- 09:10 Szef: „mały” w `rtg/ocena.py` (dłuższy bok < 4% szer.) niezgodny ze spec §2 i wpisem 08:52 (pole < 0,1% obrazu, pole `rozmiar` z generatora) → Programista ujednolica do speca.
