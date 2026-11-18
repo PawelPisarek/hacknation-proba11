@@ -41,3 +41,4 @@ P6 08:20 odpowiedź: zgoda z rekomendacją (operator — podpowiedź gdzie patrz
 P7 08:20 odpowiedź: tuż po prześwietleniu jednej naczepy, ALE praca partiami bez człowieka (pkt 3, pliki ~50 MB) jest od początku, choćby prosta — nie „potem” — Artur w pokoju
 P8 08:20 odpowiedź: wybrane 1 i 3 (ramki na obrazie + jedna ocena naczepy); z odrzuconych w części 9: przeliczenie folderu bez człowieka, bez interfejsu, wynik w raporcie (skalowalność 30% oceny) — Artur w pokoju
 P9 08:22 odpowiedź: obraz z ramkami, nad nim jedna linia z oceną naczepy (zielona / do sprawdzenia, liczba miejsc) — to pomysł 3, nie osobny ekran; pewność przy ramce tak — Artur w pokoju
+P10 08:23 odpowiedź: zgoda, same dodatki (to mierzy test); przeróbki konstrukcji tylko wspomnieć w prezentacji jako kierunek (zadanie je wymienia), nie budujemy — Artur w pokoju
