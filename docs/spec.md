@@ -20,7 +20,7 @@ Nie ma: listy miejsc, zapisu, progu odcinania, przycisków „Poprzednia / Nast�
 3. **Lista naczep** z oceną, klik → ekran A.
 4. **Lista miejsc** wybranej naczepy: #N, położenie, pewność.
 5. **„Zapisz do pliku”** (JSON + HTML) — tylko tu. „Wróć do naczepy”.
-**Dane udawane:** z `rtg ocena` na trzech zbiorach, jeśli są; inaczej wartości przykładowe z podpisem „przykład, zbiór łatwy / trudny”. Wartość bazowa dziś (`docs/wynik_bazowy.md`): łatwy FP 0/20, FN 2/20; trudny FP 20/20, FN 4/20 — nie ukrywać.
+**Dane udawane:** z `rtg ocena` na trzech zbiorach, jeśli są; inaczej wartości przykładowe z podpisem „przykład, zbiór łatwy / trudny / pusty wzorzec”. Wartość bazowa dziś (`docs/wynik_bazowy.md`): łatwy FP 0/20, FN 2/20; trudny FP 20/20, FN 4/20; pusty wzorzec (test, ziarno 1) FP 20/20, FN 4/20, dodatki trafione 23/30 — nie ukrywać.
 
 ### Definicje do pomiaru
 - **Konstrukcja / ładunek**: strefa obrazu, w której generator umieścił dodatek — `miejsce` w `prawda.json`: „konstrukcja” = ramy, podwozie i pas dolny (`strefy["konstrukcja"]` w `rtg/generator.py`), „ladunek” = obszar palet.
