@@ -100,3 +100,4 @@ P21 08:53 odpowiedź: tak, to sedno zadania — obecne narzędzie KAS zawodzi na
 - 09:04 Szef: lista miejsc przywrócona na ekranie B (main 46c5559, gh-pages 74f7545, HTTP 200); krytyk R2 → Analityk.
 - 09:05 Szef: krytyk makiety R2 8/10, 3 braki (kolor dużej liczby dodatków, 9 wierszy w karcie, brak zrzutu czystej naczepy) → Programista.
 - 09:05 Szef: duża liczba „dodatki znalezione” zostaje w dodatkach (Artur P13), ale kolor bierze z celu FN ≤ 10% na obraz (zielona, gdy cel spełniony); wiersze dublujące duże liczby chowamy pod „szczegóły”.
+- 09:07 Szef: poprawki R2 makiety wypchnięte (main 15a8ee8, gh-pages 3e25b71, HTTP 200); krytyk R3 (ostatnia) → Analityk.
