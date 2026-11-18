@@ -40,3 +40,4 @@ P5 08:20 odpowiedź: tak, drobne ukryte rzeczy w konstrukcji (zadanie: małe ilo
 P6 08:20 odpowiedź: zgoda z rekomendacją (operator — podpowiedź gdzie patrzeć; przełożony — mniej zbędnych kontroli i zapis wyniku) — Artur w pokoju
 P7 08:20 odpowiedź: tuż po prześwietleniu jednej naczepy, ALE praca partiami bez człowieka (pkt 3, pliki ~50 MB) jest od początku, choćby prosta — nie „potem” — Artur w pokoju
 P8 08:20 odpowiedź: wybrane 1 i 3 (ramki na obrazie + jedna ocena naczepy); z odrzuconych w części 9: przeliczenie folderu bez człowieka, bez interfejsu, wynik w raporcie (skalowalność 30% oceny) — Artur w pokoju
+P9 08:22 odpowiedź: obraz z ramkami, nad nim jedna linia z oceną naczepy (zielona / do sprawdzenia, liczba miejsc) — to pomysł 3, nie osobny ekran; pewność przy ramce tak — Artur w pokoju
