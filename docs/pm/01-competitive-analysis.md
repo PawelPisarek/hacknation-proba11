@@ -13,14 +13,14 @@ Wielkogabarytowe skanery RTG ładunków (Nuctech, Multicontrol, Smiths Detection
 |---|---|---|---|
 | Obecne narzędzie KAS (papierosy) | Detekcja papierosów w towarze i konstrukcji | Już wdrożone, znane operatorom | Słabe przy małych ilościach papierosów w konstrukcji (zadanie, pkt 1); rozpoznaje tylko jeden rodzaj towaru |
 | Rapiscan (oprogramowanie ładunków) | Dwa tory: anomalie (intensywność, tekstura, kształt) i głębokie uczenie dla wskazanych towarów (broń, papierosy); 96% wykryć przy 3% fałszywych alarmów (deklaracja, prezentacja CBP 2023) | Pełny pakiet ze sprzętem | Dane i modele zamknięte; brak niezależnych wyników |
-| Nuctech (platforma inteligentnej inspekcji) | Warstwa AI na platformie producenta; walidacja wg norm lotniczych (dotyczy bagażu, nie ładunków) | Dostawca sprzętu KAS — łatwa integracja | Brak jawnych danych o ładunkach; zamknięty ekosystem |
-| Smiths Detection | Algorytmy materiałowe/wybuchowe, certyfikacje | Marka, certyfikaty | Brak znalezionych danych o AI dla ładunków |
-| Multicontrol | Sprzęt dostawcy KAS | Integracja z obecnym parkiem | Brak jawnych danych o AI |
+| Nuctech (platforma inteligentnej inspekcji) | Warstwa AI na platformie producenta; walidacja wg norm lotniczych ECAC (dotyczy bagażu, nie ładunków; źródło: [artykuł o skanowaniu lotniskowym](https://www.asadria.com/?p=25109), niezweryfikowane u producenta) | Dostawca sprzętu KAS — łatwa integracja | Brak jawnych danych o ładunkach; zamknięty ekosystem |
+| Smiths Detection | Algorytmy materiałowe/wybuchowe, certyfikacje (dotyczy bagażu; niezweryfikowane — znalezione tylko w wynikach wyszukiwania, bez źródła pierwotnego) | Marka, certyfikaty | Szukałem: brak znalezionych danych o AI dla ładunków |
+| Multicontrol | Sprzęt dostawcy KAS (zadanie, pkt 1) | Integracja z obecnym parkiem | Nie szukałem danych o ich AI |
 
 ## Konkurenci pośredni
 - **Operator bez wsparcia** (ocena „na oko"): drobne zmiany i dodatki mogą umknąć (założenie, bez źródła; czasu decyzji operatora zadanie nie podaje).
 - **Kontrola fizyczna / psy / ważenie**: pewna, ale droga i wolna; nasz produkt ma pomóc wybrać, co kontrolować.
-- **Prace badawcze** (UCL + Rapiscan: „Assisted Inspection / Assisted Selection"; Tufts: model samouczący się do wykrywania nieoczekiwanych przedmiotów w kontenerach; Orange „Contraband AI"): kierunek anomalii bez ręcznego oznaczania jest realny, ale nie znalazłem gotowego produktu do pobrania.
+- **Prace badawcze** ([UCL + Rapiscan](https://discovery-pp.ucl.ac.uk/id/eprint/1508463/1/1608.01017v1.pdf): „Assisted Inspection / Assisted Selection"; [model samouczący się do wykrywania nieoczekiwanych przedmiotów w kontenerach](https://alert.northeastern.edu/assets/23_Couture.pdf) — wyszukiwarka przypisała go zespołowi Tufts, autorstwo niezweryfikowane; [Orange „Contraband AI"](https://hellofuture.orange.com/en/contraband-ai-efficiently-detects-anomalies-in-shipping-containers/)): kierunek anomalii bez ręcznego oznaczania jest realny, ale nie znalazłem gotowego produktu do pobrania.
 
 ## Przegląd podejść do detekcji anomalii na obrazach
 | Podejście | Jak działa | Plusy | Minusy dla nas |
@@ -35,7 +35,7 @@ Wielkogabarytowe skanery RTG ładunków (Nuctech, Multicontrol, Smiths Detection
 Wyniki PaDiM/PatchCore pochodzą z MVTec AD (obrazy przemysłowe) — to tylko kontekst, nie dowód jakości na RTG naczep. Wybór podejścia: patrz Rekomendacje.
 
 ## Macierz funkcji
-„brak danych" = nie znalazłem jawnego źródła; wymagania z zadania oznaczone (zadanie, pkt).
+„brak danych" = szukałem (Rapiscan, Nuctech, Smiths) i nie znalazłem jawnego źródła; dla Multicontrol i narzędzia KAS poza treścią zadania nie szukałem; wymagania z zadania oznaczone (zadanie, pkt).
 | Zdolność | Nasz produkt (plan) | KAS dziś (papierosy) | Rapiscan | Nuctech |
 |---|---|---|---|---|
 | Wykrywa przedmioty bez oznaczeń (anomalie) | tak (porównanie z wzorcem) | nie (pkt 1) | częściowo (tor anomalii, źródło: Rapiscan) | brak danych |
@@ -57,35 +57,38 @@ Wyniki PaDiM/PatchCore pochodzą z MVTec AD (obrazy przemysłowe) — to tylko k
 ## Zagrożenia
 1. **Producenci sprzętu** (Nuctech, Multicontrol) mogą dodać własne anomalie do swoich platform — odpowiedź: niezależność od dostawcy, otwarta integracja z repozytorium obrazów.
 2. **Różnice między naczepami tego samego typu** będą wyglądać jak anomalie → fałszywe alarmy; ograniczyć wieloma wzorcami (grupy) i rejestracją.
-3. **Brak danych KAS** (decyzje 08:09) — wyniki na własnym zbiorze syntetycznym nie dowodzą jakości na prawdziwych obrazach.
+3. **Ochrona danych (pkt 7)**: obrazy KAS to dane chronione — zakaz udostępniania, kopiowania i użycia poza hackathonem. Ryzyko wycieku przez publiczne repo, slajdy i makietę. Odpowiedź: tylko obrazy syntetyczne, nigdy dane KAS.
+4. **Brak danych KAS** (decyzje 08:09) — wyniki na własnym zbiorze syntetycznym nie dowodzą jakości na prawdziwych obrazach.
 
 ## Rekomendacje
 - **Postawić na**: porównanie z wzorcem + zaznaczenie obszaru (dodatki niebędące konstrukcją), niska liczba fałszywych alarmów, praca offline, czas analizy < 1 min na obraz.
 - **Nadrobić (wymóg wejścia)**: BMP, duże pliki, partie, raport z zaznaczeniami.
 - **Pominąć**: klasyfikację towaru (papierosy, broń) — to robi już narzędzie KAS; my pokazujemy tylko „tego nie ma we wzorcu".
+- **Ochrona danych (pkt 7)**: w publicznym repo, slajdach i makiecie tylko obrazy syntetyczne (generator + małe próbki); danych KAS nigdzie nie commitujemy, nie pokazujemy i nie kopiujemy.
 - **Propozycja techniczna (do decyzji Szefa/Programisty, nie Artura)**: start od różnicy po rejestracji pary (przy grupach wzorzec z wielu obrazów), liczonej na kafelkach; mocniejszy wariant opcjonalny: PatchCore na kafelkach. Ocena wg FP na czystych i FN na obrazach z dodatkami (pkt 6).
 
 ## Czego nie wiem o produkcie (lista do pytań do Artura — moment (a))
 Pominięte jako rozstrzygnięte przez zadanie: praca offline, syntetyczne dane, działanie bez udziału człowieka, język ekranu, czas analizy < 1 min na obraz (pkt 7).
-Rozstrzygnięte: P2 (użytkownik = operator RTG przy stanowisku, ogląda gotowy raport; „< 1 min" to czas analizy narzędzia, nie decyzji operatora), P3 (oba błędy liczą się razem; na czystych obrazach nic nie zaznaczać).
+Rozstrzygnięte przez ludzi (`docs/decyzje.md`): P2 (użytkownik = operator RTG przy stanowisku, ogląda gotowy raport; „< 1 min" to czas analizy narzędzia), P3 (oba błędy liczą się razem; na czystych obrazach nic nie zaznaczać); **08:14 Szef:** (a) obrazów nie zakładamy wyrównanych — narzędzie samo dopasowuje badany do wzorca; (b) kod uruchamia osoba z zewnątrz: CLI na folder obrazów + instrukcja w README; (c) raport: PNG z ramkami + JSON (ramka, pewność) na obraz + zbiorczy HTML na partię; (d) licencja MIT; **08:15 Szef:** FP = obraz czysty z choćby jednym zaznaczeniem (na obraz); FN = obraz z dodatkiem, w którym żadna ramka nie nachodzi na dodatek (IoU>0 albo środek ramki w dodatku).
+Czeka na człowieka: P4 (Paweł) — sprzęt dla limitu < 1 min na obraz (rekomendacja: laptop CPU, bez internetu).
 
 Produktowe, do Artura (jedno pytanie = jedna sprawa):
 1. Jaki problem operatora jest największy dziś (drobne skrytki, zmęczenie, ilość obrazów)?
 2. Co zyska operator, a co jego przełożony?
-3. Co ma być wynikiem: same zaznaczenia na obrazie, raport do zapisania, czy ocena „puścić / kontrola"?
+3. Co operator widzi na ekranie najpierw i jak opisane jest zaznaczone miejsce (sama ramka, pewność, krótki opis)? (Format wyniku — PNG, JSON, zbiorczy HTML — jest ustalony.)
 4. Raport ma dawać jedną ocenę na naczepę czy listę zaznaczonych miejsc (z ważnością)?
 5. Czy operator może odrzucić zaznaczenie („to element konstrukcji") i czy to zapamiętujemy?
 6. Czy przeróbki konstrukcji i uszkodzenia (pkt 1–2) mają być wykrywane, czy wystarczą „dodatki niebędące konstrukcją" (to mierzy test, pkt 6)? Rekomendacja: dodatki = rdzeń, przeróbki jako dodatek, jeśli zostanie czas.
-7. Co uznajemy za „trafione" zaznaczenie: wystarczy, że dotyka dodatku, czy musi go dobrze obrysować?
-8. Fałszywy alarm: liczymy każde zaznaczone miejsce na czystym obrazie, czy cały obraz z jakimkolwiek zaznaczeniem? A zaznaczenie obok dodatku na obrazie z dodatkiem?
 9. Wejście: para (wzorzec + badany) czy grupa kilku obrazów naraz? Czy wzorzec wybiera system, czy operator?
 10. Narzędzie pracuje na jednym obrazie czy na kolejce wielu naczep (partia)?
 11. Jak wygląda pokaz (do 2 min): jedna naczepa czy seria?
-
-Techniczne/organizacyjne (do Szefa, nie do Artura): wyrównanie obrazów w parze i przesunięcia (luka 6 w `docs/materialy.md`), czy kod uruchamia jury na własnych danych (luka 13), sprzęt dla limitu < 1 min (luka 10), format raportu i integracja z repozytorium (luka 11), licencja (luka 14).
+(Numeracja zachowana; 7–8, definicje trafienia i fałszywego alarmu, rozstrzygnął Szef.)
 
 ## Źródła (wyszukiwanie 18.11.2026)
 - [Rapiscan — technologia](https://rapiscan-ase.com/resource-center/technology)
+- [Skanowanie lotniskowe (Nuctech, Smiths) — artykuł](https://www.asadria.com/?p=25109)
+- [UCL + Rapiscan, analiza obrazów ładunków](https://discovery-pp.ucl.ac.uk/id/eprint/1508463/1/1608.01017v1.pdf)
+- [Model do wykrywania nieoczekiwanych przedmiotów w kontenerach (ALERT/Northeastern)](https://alert.northeastern.edu/assets/23_Couture.pdf)
 - [Orange: Contraband AI](https://hellofuture.orange.com/en/contraband-ai-efficiently-detects-anomalies-in-shipping-containers/)
 - [Survey: deep learning w obrazowaniu RTG](https://ar5iv.arxiv.org/html/2001.01293)
 - [PaDiM](https://arxiv.org/pdf/2011.08785)
