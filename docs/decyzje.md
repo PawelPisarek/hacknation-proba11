@@ -23,3 +23,5 @@ P4 08:14 Paweł: na jakim sprzęcie ma się mieścić „< 1 min na obraz” ~50
 - 08:16 Projektant: poprawka 1a runda 2 — rozstrzygnięcia Szefa 08:14–08:15 przeniesione jako ustalone, pyt. 7–8 usunięte z listy do Artura, pyt. 3 zawężone, źródła/„niezweryfikowane” przy twierdzeniach o konkurencji, ochrona danych (pkt 7) w zagrożeniach i rekomendacjach
 - 08:16 Szef: 1a recenzja przejścia runda 3 (ostatnia) → Analityk
 - 08:16 Szef: krok 0P zamknięty — wynik bazowy test: FP 0/20, FN 2/20, 0,17 s/obraz; 50 MB ~4 s. Dalej (obok łańcucha): trudniejszy generator czystych par → Programista.
+- 08:17 Szef: 1a recenzja runda 3 — „brak braków zmieniających zakres lub kryteria” → krok 1a zamknięty (3 rundy). Start 1b /discover → Projektant.
+- 08:17 Szef: rodzaj wzorca — obsługujemy oba warianty z zadania (pkt 3 i 7): wzorzec = obraz tego środka bez anomalii, pusty albo „przed” załadunkiem; narzędzie nie zakłada, który.
