@@ -77,3 +77,4 @@ P18 08:44 bez odpowiedzi Paweł → rekomendacja: puszczamy 1b dalej do /write-p
 08:47 Szef: próg odcinania pokazujemy w raporcie z partii (P19), nie na głównym ekranie; główny ekran = dokładnie 4 elementy z 08:38 (bez Poprzednia/Następna).
 08:47 Szef: liczby udawane w makiecie podpisane, z którego zbioru są (łatwy / trudny); w raporcie partii pokazujemy oba zbiory.
 08:48 Szef: krok 2 R2 → Analityk.
+P20 08:49 Artur: Najpierw sprawdzamy, czy narzędzie nie alarmuje na czystych naczepach, gdy ładunek jest ułożony inaczej niż we wzorcu albo wzorzec to pusta naczepa. Czy to jest dla Ciebie pierwsze ryzyko do sprawdzenia? (rekomendacja: tak — to pierwsze ryzyko: bez tego operator przestanie ufać zielonej ocenie) — czeka
