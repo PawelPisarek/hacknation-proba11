@@ -64,3 +64,5 @@ P16 08:32 Artur: Co dokładnie jest na ramce: sama ramka z pewnością (np. 87%)
 1b recenzja przejścia runda 3 → Analityk (08:33)
 P16 08:33 odpowiedź: ramka = pewność i numer z listy miejsc, bez opisu słownego — Artur w pokoju
 P17 08:33 Artur: Raport z partii pokazujemy w pokazie jako jedną stronę z liczbami (ile czystych bez alarmu, ile dodatków znalezionych) i listą naczep z oceną — otwieraną z tego samego ekranu, czy jako osobny plik do otwarcia? (rekomendacja: strona otwierana z ekranu przyciskiem, ten sam plik da się też zapisać) — czeka
+1b recenzja runda 3: 2 braki (Z2 w dwóch wersjach; Z3/Z6/Z1 nadal „suma FP+FN”) — 3 rundy wyczerpane (08:34)
+P18 08:34 Paweł: 1b po 3 rundach ma 2 braki (niespójne zapisy miar FP/FN w pliku 02). Puszczamy dalej do /write-prd? (rekomendacja: tak — braki zapisane jako ryzyka w specu, Projektant ujednolica zapis do decyzji 08:33 przy /write-prd) — czeka
