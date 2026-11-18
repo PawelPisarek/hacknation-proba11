@@ -1,5 +1,5 @@
 # Stan — próba 11
-Kamień: makieta pod gh-pages (koniec próby po krytyku makiety). Teraz 08:32.
+Kamień: makieta pod gh-pages (koniec próby po krytyku makiety). Teraz 08:33.
 
 | zadanie | kto | status |
 |---|---|---|
@@ -9,7 +9,7 @@ Kamień: makieta pod gh-pages (koniec próby po krytyku makiety). Teraz 08:32.
 | 0P++ metoda odporna na trudny zbiór | Programista | zlecone |
 | 1a /competitive-analysis → docs/pm/01 | Projektant | zamknięte (3 rundy) |
 | przesłuchanie Artura (pokój Produkt) | Projektant | zlecone |
-| 1b /discover → docs/pm/02 | Projektant | poprawka po recenzji 2 (3 braki) |
+| 1b /discover → docs/pm/02 | Projektant | recenzja 3 (Analityk) |
 | 2 /write-prd | Projektant | czeka na pętlę 1b |
 | makieta + krytyk | Programista, Analityk | czeka na spec |
 

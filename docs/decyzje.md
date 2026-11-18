@@ -61,3 +61,4 @@ P16 08:32 Artur: Co dokładnie jest na ramce: sama ramka z pewnością (np. 87%)
 1b recenzja runda 2: 3 braki (przeróbki otwarte/zamknięte, mianownik Z1/Z2, brak pomiaru małych dodatków w konstrukcji) → Projektant (08:32)
 08:32 Szef: miary jak w skrypcie oceny — FP = odsetek czystych obrazów z ramką, FN = odsetek obrazów z dodatkiem bez trafienia; liczone osobno, robocze progi równe (każdy ≤ 10%, bez źródła).
 08:32 Szef: wynik trafień dodatków raportujemy też w podziale na miejsce (konstrukcja / ładunek) i rozmiar (mały / duży).
+1b recenzja przejścia runda 3 → Analityk (08:33)
