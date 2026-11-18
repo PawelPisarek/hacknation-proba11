@@ -13,3 +13,5 @@ python -m rtg ocena dane/gen/test                                 # FP/FN wg §6
 python tests/test_dymny.py
 ```
 Wynik bazowy: `docs/wynik_bazowy.md`. Próbka danych: `dane/probka/`.
+
+Makieta (dane udawane): https://pawelpisarek.github.io/hacknation-proba11/ — ekran naczepy `#a/1`, `#a/2`, raport partii `#b`. Źródło: `makieta/index.html` (lokalnie: otwórz plik w przeglądarce).
