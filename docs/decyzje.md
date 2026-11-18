@@ -84,3 +84,8 @@ P20 08:49 Artur: Najpierw sprawdzamy, czy narzędzie nie alarmuje na czystych na
 08:50 Szef: krok 2 R3 → Analityk.
 P20 08:51 odpowiedź: tak, to pierwsze ryzyko; fałszywe alarmy na czystych to połowa 40% oceny — Artur w pokoju
 08:51 Szef: krok 2 R3 — „brak braków zmieniających zakres lub kryteria” (Analityk); pętla zamknięta po 3 rundach. Recenzja odbiorcy → Programista.
+08:52 Szef: recenzja odbiorcy R1 — 5 braków (Programista) → Projektant. Rozstrzygnięcia:
+08:52 Szef: „mały/duży” — reguła ze speca (pole < 0,1% obrazu, do czasu odpowiedzi Artura P22); generator zapisuje `rozmiar` w prawda.json, `ocena` czyta to pole.
+08:52 Szef: `porownaj --folder` — pary po nazwach `*_wzorzec.bmp` / `*_badany.bmp`; opcjonalnie `--wzorce KATALOG` (pula czystych); każdy podkatalog = osobny zbiór, nazwa = podpis w raporcie.
+08:52 Szef: testy akceptacji — 20 czystych + 20 z dodatkiem na zbiór; ziarno 0 strojenie, ziarno 1 ocena (bez strojenia); test „mały w konstrukcji” liczony łącznie na trudnym i pustym wzorcu.
+08:52 Szef: próg odcinania = minimalna pewność ramki w %; `k` parametr wewnętrzny; oba w JSON.
