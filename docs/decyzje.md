@@ -78,3 +78,6 @@ P18 08:44 bez odpowiedzi Paweł → rekomendacja: puszczamy 1b dalej do /write-p
 08:47 Szef: liczby udawane w makiecie podpisane, z którego zbioru są (łatwy / trudny); w raporcie partii pokazujemy oba zbiory.
 08:48 Szef: krok 2 R2 → Analityk.
 P20 08:49 Artur: Najpierw sprawdzamy, czy narzędzie nie alarmuje na czystych naczepach, gdy ładunek jest ułożony inaczej niż we wzorcu albo wzorzec to pusta naczepa. Czy to jest dla Ciebie pierwsze ryzyko do sprawdzenia? (rekomendacja: tak — to pierwsze ryzyko: bez tego operator przestanie ufać zielonej ocenie) — czeka
+08:49 Szef: krok 2 R2 — 2 braki (Analityk) → Projektant.
+08:49 Szef: Z3 = FP i FN osobno, żaden nie gorszy od najprostszego sposobu, a co najmniej jeden niższy o ≥ 20% względnie (gdy bazowy > 0); 20% to założenie bez źródła — jedna wersja w 02, 03 i specu.
+08:49 Szef: raport partii (ekran B) pokazuje trzy zbiory: łatwy, trudny, pusty wzorzec — każdy podpisany.
