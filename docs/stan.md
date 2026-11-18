@@ -1,5 +1,5 @@
 # Stan — próba 11
-Kamień: makieta pod gh-pages (koniec próby po krytyku makiety). Teraz 08:37.
+Kamień: makieta pod gh-pages (koniec próby po krytyku makiety). Teraz 08:38.
 
 | zadanie | kto | status |
 |---|---|---|
