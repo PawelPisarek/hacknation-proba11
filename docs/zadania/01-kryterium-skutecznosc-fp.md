@@ -9,3 +9,6 @@ W fazie 1 Programista już poprawia metodę z treści zadania (dopasowanie nieli
 
 **09:10 v1 (docs/wynik_bazowy.md):** trudny test FP 5/20 (25%), FN 2/20; łatwy test FN 3/20 (było 2); pusty wzorzec FP 20/20.
 Nadal FP > 10% na trudnym i 100% przy pustym wzorcu — plan „wzorzec z wielu czystych” (Programista).
+
+## 09:14 — po ujednoliceniu „mały” (8b0aef0)
+Liczby FP/FN bez zmian. Małych dodatków w test tylko 15 (konstrukcja/małe: 2/2 trudny, 0/1 pusty wz.) — skuteczność na małych niemierzalna; zbiór z wymuszonymi małymi w toku.
