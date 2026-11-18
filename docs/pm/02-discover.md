@@ -15,7 +15,7 @@
 ## Czego nie wiem o produkcie
 Odpowiedziane przez Artura w pokoju (08:20–08:28): P5–P13 (patrz „Ustalone"). Zostaje:
 - P14 — który z trzech szkiców ekranu (moment (c), przed `/write-prd`) — czeka; rekomendacja: wariant 1 z paskiem oceny nad obrazem.
-- Pyt. 5 z pliku 01 (odrzucanie zaznaczeń przez operatora) — nie zadane; pomysł 6 poza wyborem, więc w MVP odrzucamy; wraca w kierunkach.
+- P15 (pyt. 5 z pliku 01) — co operator robi z ramką, której nie uważa za dodatek — czeka; rekomendacja: zostawia w raporcie, bez odrzucania (odrzucanie to pomysł 6, niewybrany). Do odpowiedzi MVP bez odrzucania.
 
 ## Użytkownik, problem, chwile użycia
 - **Użytkownik**: operator RTG SCS na granicy zewnętrznej UE (zadanie); przełożony czyta zapis wyniku (P6).
@@ -39,7 +39,8 @@ Z trzech perspektyw: PM, projektant (UX), inżynier.
 ## Wybór pomysłów, założenia, eksperymenty
 
 ### Wybór Artura (P8, P9–P13)
-- **Rozwijamy: 1 (ramki na obrazie) + 3 (jedna ocena naczepy)**; z odrzuconych **część 9**: przeliczenie folderu bez człowieka, bez interfejsu, wynik w raporcie (skalowalność, 30% oceny). Pomysł 7 (zbiorczy HTML) wchodzi jako forma wyniku tej części; 2, 4, 5, 6, 8, 10 — poza MVP (5 w części: system sam wybiera wzorzec, P11).
+- **Rozwijamy: 1 (ramki na obrazie) + 3 (jedna ocena naczepy)**; z odrzuconych **część 9**: przeliczenie folderu bez człowieka, bez interfejsu, wynik w raporcie (skalowalność, 30% oceny). Pomysł 7 (zbiorczy raport partii) wchodzi jako forma wyniku tej części i **jest zawsze w MVP, od kroku 1** (Szef 08:31): narzędzie liczy obrazy bez alarmu, obrazy z alarmem i liczbę ramek; gdy w folderze jest `prawda.json`, ten sam raport dokłada FP/FN i trafione dodatki ze skryptu oceny. Poza MVP: 2 (obok siebie), 4, 5, 6, 8, 10 — poza MVP (5 w części: system sam wybiera wzorzec, P11).
+- P14 (08:30): wariant ekranu 1 — jeden obraz na całą szerokość (naczepa długa i płaska), ocena na górze; plus widoczny przełącznik „wzorzec / badany” nad obrazem (to samo miejsce, ta sama skala). **Wchodzi więc do zakresu ta część pomysłu 2**; wzorzec i badany obok siebie nie.
 - Zmiany w wybranych: nad obrazem jedna linia z oceną (zielona / do sprawdzenia, liczba miejsc) — to nie osobny ekran; przy ramce pewność (P9).
 - Zakres: same dodatki; przeróbki konstrukcji tylko jako kierunek w prezentacji (P10). Wzorzec: para na ekranie, pod spodem model nauczony z wielu czystych (P11). Jeden obraz w pokazie, partia przez raport (P12). Pokaz: dwie naczepy (czysta, potem z dodatkiem), na końcu ~10 s raportu partii (P13).
 
@@ -48,25 +49,25 @@ Z trzech perspektyw: PM, projektant (UX), inżynier.
 |---|---|---|---|---|
 | Z1 | Syntetyczne dodatki są wystarczająco podobne do prawdziwych, by wynik coś mówił | wykonalność | wysoki | wysokie |
 | Z2 | Różnica po rejestracji daje mało alarmów na czystych obrazach mimo różnic ustawienia | wykonalność | wysoki | wysokie |
-| Z3 | Nauczony model z wielu czystych obrazów obniża FP względem pojedynczego wzorca | wykonalność | średni | średnie |
+| Z3 | Wybrany sposób nauki z wielu czystych wzorców (pkt 5, P11 — wymaganie, nie do odrzucenia) działa lepiej niż najprostszy (np. średnia) | wykonalność | średni | średnie |
 | Z4 | Operator zrozumie pasek oceny + ramki bez szkolenia | użyteczność | średni | niskie |
 | Z5 | Analiza ≤ 1 min na obraz ~50 MB na sprzęcie jury (P4 czeka) | wykonalność | wysoki | średnie |
-| Z6 | Mała liczba ramek (mało FP) jest ważniejsza niż wykrycie każdego (oba błędy liczą się razem, P3) | wartość | wysoki | niskie |
+| Z6 | Oba błędy (FP i FN) liczą się równo (P3), więc cel to minimum sumy błędów, bez przechyłu w stronę mniejszej liczby ramek | wartość | wysoki | niskie |
 | Z7 | Dane KAS nie trafią do repo, slajdów ani makiety | ochrona danych | wysoki | niskie |
 
 **Najryzykowniejsze (do potwierdzenia przez Artura, czeka):** Z1 i Z2. Rekomendacja: potwierdzamy oba; sprawdzamy je pierwsze.
 
 ### Eksperymenty
+Zbiór pomiarowy dla Z1 i Z2: **trudny** (`generuj … --trudny`) i wariant z pustym wzorcem (`--pusty-wzorzec`), nie zbiór łatwy; ocena skryptem oceny z `prawda.json`. Progi są założeniami roboczymi bez źródła; oba błędy liczone razem i równo (P3).
 | Zał. | Eksperyment | Kryterium sukcesu | Kryterium porażki → reguła |
 |---|---|---|---|
-| Z2 | Różnica po rejestracji na zestawie czystych par syntetycznych (generator Programisty) | ≥ 90% czystych obrazów bez ramki | < 90% → próg wyżej lub wariant mocniejszy (PatchCore) |
-| Z1 | Dodatki o różnej wielkości w generatorze, skrypt oceny | ≥ 80% dodatków z ramką na dodatku | < 80% → mniejsze okno/czulsze progi, wpisać w ryzyka |
-| Z3 | Porównanie: jeden wzorzec vs model z N czystych | FP niższe o ≥ 20% względnie | brak różnicy → zostaje para |
+| Z2 | Różnica po rejestracji na zbiorze trudnym i z pustym wzorcem | łączny błąd (FP+FN) na obrazach ≤ 10% na obu zbiorach | > 10% na którymś → przejście na mocniejszą metodę (PatchCore/PaDiM) dla tego zbioru; próg dobieramy tak, by minimalizować sumę FP+FN |
+| Z1 | Dodatki o różnej wielkości, ten sam zbiór trudny | trafione dodatki ≥ 80% (ramka na dodatku) przy łącznym błędzie jak wyżej | < 80% → czulsze okno; zapis w ryzykach |
+| Z3 | Porównanie sposobów nauki z N czystych (np. średnia vs model z rozkładem) — nauka zostaje, wybieramy sposób | wybrany sposób ma łączny błąd niższy o ≥ 20% względnie od najprostszego | brak różnicy → zostaje najprostszy; nauka z wielu czystych pozostaje |
 | Z5 | Pomiar czasu na obrazie ~50 MB | < 60 s | ≥ 60 s → zmniejszenie skali + zapis założenia |
-| Z4 | Próba z Arturem/Pawłem na makiecie: „czy obraz jest czysty?" | poprawna odpowiedź w < 10 s bez wyjaśnień | błąd → przeprojektować pasek |
-Progi 90/80/20% to założenia robocze (bez źródła), do skorygowania po pierwszym przebiegu.
+| Z4 | Próba z Arturem/Pawłem na makiecie: „czy naczepa jest czysta i gdzie jest dodatek?”, z przełącznikiem „wzorzec / badany” | poprawna odpowiedź w < 10 s bez wyjaśnień | błąd → przeprojektować pasek lub przełącznik |
 
 ### Plan i reguły decyzji
-Kolejność: (1) generator + skrypt oceny (Programista), (2) różnica po rejestracji + ramki, (3) pasek oceny i ekran z jednym obrazem, (4) tryb folderu + raport HTML, (5) pokaz: dwie naczepy + raport partii. Jeśli Z2 nie przejdzie, nie dokładamy funkcji — poprawiamy wykrywanie. Jeśli czas się kończy, wypada zbiorczy HTML, zostaje JSON na obraz.
+Kolejność: (1) generator + skrypt oceny (Programista) **i tryb folderu z raportem partii od razu** (P7, P13) — raport zawiera liczby bez alarmu / z alarmem / ramek oraz FP/FN przy `prawda.json`; (2) różnica po rejestracji + nauka z wielu czystych + ramki, mierzone na zbiorze trudnym i z pustym wzorcem; (3) ekran z jednym obrazem, paskiem oceny i przełącznikiem „wzorzec / badany”; (4) pokaz: dwie naczepy + raport partii. Raport partii nie wypada nawet przy braku czasu; wypadać może tylko ozdobny HTML ponad liczbami i JSON. Jeśli Z2 nie przejdzie, nie dokładamy funkcji — zmieniamy metodę wg reguły wyżej.
 
 <!-- skill: przeplywy-pm -->
