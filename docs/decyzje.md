@@ -55,3 +55,5 @@ P15 08:30 Artur: Co robi operator z ramką, której nie uważa za dodatek (np. e
 08:31 Szef: raport partii zawsze w MVP i od kroku 1 (tryb folderu przed ekranem). Narzędzie liczy obrazy bez alarmu / z alarmem i liczbę ramek; gdy w folderze jest prawda.json, ten sam raport dokłada FP/FN i trafione dodatki ze skryptu oceny.
 08:31 Szef: nauka z wielu czystych wzorców (pkt 5, P11) jest wymaganiem, nie eksperymentem do odrzucenia; eksperyment wybiera tylko sposób.
 08:31 Szef: oba błędy (FP i FN) traktujemy równo (P3); bez hierarchii „mało ramek ważniejsze”.
+P15 08:32 odpowiedź: ramka zostaje w raporcie, bez odrzucania przez operatora — Artur w pokoju
+P16 08:32 Artur: Co dokładnie jest na ramce: sama ramka z pewnością (np. 87%), czy jeszcze krótki opis miejsca („lewy dolny róg, przy ramie”)? (rekomendacja: ramka z pewnością i numerem na liście; opis słowny odpada — P9 wybrał pewność, opis nie jest potrzebny do liczb jury) — czeka
