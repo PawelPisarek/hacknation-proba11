@@ -51,3 +51,7 @@ P14 08:28 Artur: Który z trzech szkiców ekranu bierzemy: (1) jeden obraz na ca
 1b recenzja przejścia runda 1 → Analityk (08:30)
 P14 08:30 odpowiedź: wariant 1 (jeden obraz na całą szerokość, ocena na górze; naczepa długa i płaska). Zmiana: widoczny przełącznik „wzorzec / badany” nad obrazem (to samo miejsce, ta sama skala), nie osobny widok — Artur w pokoju
 P15 08:30 Artur: Co robi operator z ramką, której nie uważa za dodatek (np. element konstrukcji): zostawia ją w raporcie, czy może ją odrzucić? (rekomendacja: zostawia, bez odrzucania — odrzucanie to pomysł 6, którego nie wybrałeś) — czeka
+1b recenzja runda 1: 5 braków (P13/P7 plan, Z3 vs pkt 5, Z2 zbiór, Z6 vs P3, P14/P15) → Projektant (08:31)
+08:31 Szef: raport partii zawsze w MVP i od kroku 1 (tryb folderu przed ekranem). Narzędzie liczy obrazy bez alarmu / z alarmem i liczbę ramek; gdy w folderze jest prawda.json, ten sam raport dokłada FP/FN i trafione dodatki ze skryptu oceny.
+08:31 Szef: nauka z wielu czystych wzorców (pkt 5, P11) jest wymaganiem, nie eksperymentem do odrzucenia; eksperyment wybiera tylko sposób.
+08:31 Szef: oba błędy (FP i FN) traktujemy równo (P3); bez hierarchii „mało ramek ważniejsze”.
