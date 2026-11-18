@@ -94,3 +94,4 @@ P21 08:53 odpowiedź: tak, to sedno zadania — obecne narzędzie KAS zawodzi na
 08:53 Szef: odbiorca R1 poprawione przez Projektanta (spec); recenzja odbiorcy R2 → Programista.
 08:53 Szef: recenzja odbiorcy R2 — brak braków; spec do budowy. Pole JSON: prog_pewnosci (Programista). Makieta → Programista.
 08:58 Szef: makieta R1 na gh-pages (200), zrzuty docs/makieta/ekran-a.png, ekran-b.png; krytyk R1 → Analityk.
+08:59 Szef: krytyk makiety R1 — ocena 6/10, 5 braków (wszystkie poprawki Programisty) + lista miejsc na ekranie B wbrew Arturowi 08:38 → usunąć. Poprawka R1 → Programista.
