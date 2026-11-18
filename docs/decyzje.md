@@ -107,3 +107,4 @@ P21 08:53 odpowiedź: tak, to sedno zadania — obecne narzędzie KAS zawodzi na
 - 09:10 Programista: wariant „wzorzec = model z wielu czystych” (P11) nie zmieścił się w rundzie — zapisany jako następny krok w docs/wynik_bazowy.md.
 - 09:10 Szef: v1 domyślna w CLI (trudny test FP 20/20 → 5/20, FN 4/20 → 2/20; koszt: łatwy test FN 2 → 3); v0 pod `--metoda v0`. Przyjęte.
 - 09:10 Szef: „mały” w `rtg/ocena.py` (dłuższy bok < 4% szer.) niezgodny ze spec §2 i wpisem 08:52 (pole < 0,1% obrazu, pole `rozmiar` z generatora) → Programista ujednolica do speca.
+- 09:14 Programista: reguła „dłuższy bok < 4%” wycofana (wpis 09:10 nieaktualny). Generator zapisuje `rozmiar` (maly/duzy, pole bboxa < 0,1% obrazu, spec §2, decyzja 08:52) przy każdym dodatku w `prawda.json`; `rtg/ocena.py` tylko czyta to pole (brak pola = błąd). Ocena podaje też komórki miejsce × rozmiar (spec §2).

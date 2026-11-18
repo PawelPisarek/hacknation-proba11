@@ -13,7 +13,6 @@ from pathlib import Path
 
 from .detektor_v1 import wykryj
 
-MALY = 0.04  # dodatek „mały”: dłuższy bok bboxa < 4% szerokości obrazu (docs/decyzje.md)
 from .obrazy import wczytaj
 
 
@@ -29,7 +28,6 @@ def trafiony(prawda_bbox, ramki):
 def ocen(katalog: str | Path, metoda=wykryj, **param) -> dict:
     katalog = Path(katalog)
     prawda = json.loads((katalog / "prawda.json").read_text())
-    szer = prawda["rozmiar"][0]
     podzial = {}  # (miejsce|rozmiar) -> [trafione, wszystkie]
     fp = fn = n_cz = n_dod = trafione = wszystkie = falszywe_ramki = 0
     czasy, szczegoly = [], []
@@ -47,9 +45,9 @@ def ocen(katalog: str | Path, metoda=wykryj, **param) -> dict:
             n_dod += 1
             traf = [trafiony(d["bbox"], ramki) for d in p["dodatki"]]
             for d, t in zip(p["dodatki"], traf):
-                b = d["bbox"]
-                rozm = "maly" if max(b[2] - b[0] + 1, b[3] - b[1] + 1) < MALY * szer else "duzy"
-                for klucz in (d["miejsce"], rozm):
+                if "rozmiar" not in d:
+                    raise ValueError(f"{p['id']}: brak pola 'rozmiar' w prawda.json — wygeneruj zbiór ponownie")
+                for klucz in (d["miejsce"], d["rozmiar"], f'{d["miejsce"]}/{d["rozmiar"]}'):
                     podzial.setdefault(klucz, [0, 0])
                     podzial[klucz][0] += t
                     podzial[klucz][1] += 1
@@ -75,4 +73,6 @@ def linia(w: dict) -> str:
 def _podzial(pd):
     nazwy = [("konstrukcja", "konstrukcja"), ("ladunek", "ładunek"), ("maly", "małe"), ("duzy", "duże")]
     cz = [f"{n} {pd[k][0]}/{pd[k][1]}" for k, n in nazwy if k in pd]
-    return (" | trafione: " + ", ".join(cz)) if cz else ""
+    krz = [f"{n1}/{n2} {pd[k][0]}/{pd[k][1]}" for k1, n1 in nazwy[:2] for k2, n2 in nazwy[2:]
+           if (k := f"{k1}/{k2}") in pd]
+    return (" | trafione: " + ", ".join(cz) + (" | " + ", ".join(krz) if krz else "")) if cz else ""

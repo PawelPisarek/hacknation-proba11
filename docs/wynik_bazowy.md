@@ -47,15 +47,15 @@ FN liczone na obraz jest tu mało mówiące przy setkach ramek — miarodajne je
 5. Normalizacja szumu i próg jak w v0 (k=4·MAD), obszary ≥ 15 px.
 
 Strojone tylko na trudnym dev (ziarno 0) i łatwym dev; test (ziarno 1) uruchomiony raz na końcu. Parametry: k=4, tol_x=0,025·szer, tol_h=0,01·szer, kara=0,05, min_pole=15.
-Trafienia w podziale: miejsce (konstrukcja/ładunek) i rozmiar (mały = dłuższy bok < 4% szerokości obrazu).
+Trafienia w podziale: miejsce (konstrukcja/ładunek) i rozmiar z pola `rozmiar` w `prawda.json` (spec §2, decyzja 08:52: „mały” = pole bboxa < 0,1% obrazu, < 360 px² przy 1000×360). Linie przeliczone 09:14 po zmianie reguły; obrazy bez zmian, zmienił się tylko `prawda.json`.
 
 | zbiór | v1 | v0 (dla porównania) |
 |---|---|---|
-| **trudny test** | FP 5/20 (25%) \| FN 2/20 (10%) \| trafione 28/32 (konstr. 15/18, ład. 13/14, małe 10/13, duże 18/19) \| fałszywe ramki 8 \| 0,65 s/obraz | FP 20/20 \| FN 4/20 \| 25/32 \| fałszywe ramki 419 |
+| **trudny test** | FP 5/20 (25%) \| FN 2/20 (10%) \| trafione 28/32 (konstr. 15/18, ład. 13/14, małe 3/3, duże 25/29; konstr./małe 2/2, konstr./duże 13/16, ład./małe 1/1, ład./duże 12/13) \| fałszywe ramki 8 \| 0,61 s/obraz | FP 20/20 \| FN 4/20 \| 25/32 \| fałszywe ramki 419 |
 | trudny dev | FP 2/20 (10%) \| FN 3/20 (15%) \| trafione 25/31 \| fałszywe ramki 1 \| 0,60 s | FP 19/20 \| FN 0/20 \| 27/31 |
-| **łatwy test** | FP 0/20 \| FN 3/20 (15%) \| trafione 25/30 (konstr. 13/16, ład. 12/14, małe 13/17, duże 12/13) \| 0,70 s | FP 0/20 \| FN 2/20 \| 25/30 |
+| **łatwy test** | FP 0/20 \| FN 3/20 (15%) \| trafione 25/30 (konstr. 13/16, ład. 12/14, małe 7/8, duże 18/22; konstr./małe 5/5, konstr./duże 8/11, ład./małe 2/3, ład./duże 10/11) \| 0,62 s | FP 0/20 \| FN 2/20 \| 25/30 |
 | łatwy dev | FP 0/20 \| FN 0/20 \| trafione 33/35 | FP 0/20 \| FN 0/20 \| 33/35 |
-| **pusty wzorzec test** | FP 20/20 (100%) \| FN 2/20 (10%) \| trafione 27/30 (konstr. 7/10, ład. 20/20) \| fałszywe ramki 241 \| 0,61 s | FP 20/20 \| FN 4/20 \| 23/30 |
+| **pusty wzorzec test** | FP 20/20 (100%) \| FN 2/20 (10%) \| trafione 27/30 (konstr. 7/10, ład. 20/20, małe 3/4, duże 24/26; konstr./małe 0/1, konstr./duże 7/9, ład./małe 3/3, ład./duże 17/17) \| fałszywe ramki 241 \| 0,61 s | FP 20/20 \| FN 4/20 \| 23/30 |
 | duże 12000×4200 (1+1) | FP 0/1 \| FN 1/1 \| 4,0 s/obraz | FP 0/1 \| FN 0/1 |
 
 Wnioski:

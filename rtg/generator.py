@@ -19,6 +19,14 @@ from scipy import ndimage
 from .obrazy import zapisz_bmp
 
 
+MALY_POLE = 0.001  # spec §2 / decyzja 08:52: „maly”, gdy pole bboxa < 0,1% powierzchni obrazu
+
+
+def rozmiar_dodatku(b, w, h) -> str:
+    pole = (b[2] - b[0] + 1) * (b[3] - b[1] + 1)
+    return "maly" if pole < MALY_POLE * w * h else "duzy"
+
+
 def _tekstura(rng, h, w, skala, siatka=24):
     """Gładki szum 0..1 (mały szum powiększony — tanio też dla dużych obrazów)."""
     gh, gw = max(2, h // max(1, skala)), max(2, w // max(1, skala))
@@ -237,7 +245,7 @@ def _para_trudna(rng, katalog, pid, rodzaj, h, w, s, pusty_wzorzec):
     zapisz_bmp(Iw, katalog / f"{pid}_wzorzec.bmp")
     zapisz_bmp(Ib, katalog / f"{pid}_badany.bmp")
     return {"id": pid, "wzorzec": f"{pid}_wzorzec.bmp", "badany": f"{pid}_badany.bmp",
-            "etykieta": rodzaj, "dodatki": [{"bbox": b, "miejsce": m} for b, m in zip(bboxy, miejsca)],
+            "etykieta": rodzaj, "dodatki": [{"bbox": b, "miejsce": m, "rozmiar": rozmiar_dodatku(b, w, h)} for b, m in zip(bboxy, miejsca)],
             "przesuniecie": [round(dx, 2), round(dy, 2)]}
 
 
@@ -281,7 +289,7 @@ def generuj_zbior(katalog: str | Path, n_czystych: int, n_dodatek: int, h: int =
         zapisz_bmp(Iw, katalog / f"{pid}_wzorzec.bmp")
         zapisz_bmp(Ib, katalog / f"{pid}_badany.bmp")
         pary.append({"id": pid, "wzorzec": f"{pid}_wzorzec.bmp", "badany": f"{pid}_badany.bmp",
-                     "etykieta": rodzaj, "dodatki": [{"bbox": b, "miejsce": m} for b, m in zip(bboxy, miejsca)],
+                     "etykieta": rodzaj, "dodatki": [{"bbox": b, "miejsce": m, "rozmiar": rozmiar_dodatku(b, w, h)} for b, m in zip(bboxy, miejsca)],
                      "przesuniecie": [round(dx, 2), round(dy, 2)]})
     prawda = {"rozmiar": [w, h], "ziarno": ziarno, "trudny": trudny, "pusty_wzorzec": pusty_wzorzec, "pary": pary}
     (katalog / "prawda.json").write_text(json.dumps(prawda, ensure_ascii=False, indent=1))

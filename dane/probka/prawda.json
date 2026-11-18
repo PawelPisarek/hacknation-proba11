@@ -4,6 +4,8 @@
   216
  ],
  "ziarno": 7,
+ "trudny": false,
+ "pusty_wzorzec": false,
  "pary": [
   {
    "id": "para_000",
@@ -62,7 +64,8 @@
       420,
       71
      ],
-     "miejsce": "ladunek"
+     "miejsce": "ladunek",
+     "rozmiar": "duzy"
     },
     {
      "bbox": [
@@ -71,7 +74,8 @@
       215,
       98
      ],
-     "miejsce": "ladunek"
+     "miejsce": "ladunek",
+     "rozmiar": "maly"
     }
    ],
    "przesuniecie": [
@@ -92,7 +96,8 @@
       222,
       184
      ],
-     "miejsce": "konstrukcja"
+     "miejsce": "konstrukcja",
+     "rozmiar": "duzy"
     }
    ],
    "przesuniecie": [
@@ -113,7 +118,8 @@
       193,
       109
      ],
-     "miejsce": "ladunek"
+     "miejsce": "ladunek",
+     "rozmiar": "duzy"
     },
     {
      "bbox": [
@@ -122,7 +128,8 @@
       443,
       169
      ],
-     "miejsce": "konstrukcja"
+     "miejsce": "konstrukcja",
+     "rozmiar": "duzy"
     }
    ],
    "przesuniecie": [
@@ -143,7 +150,8 @@
       280,
       184
      ],
-     "miejsce": "konstrukcja"
+     "miejsce": "konstrukcja",
+     "rozmiar": "duzy"
     },
     {
      "bbox": [
@@ -152,7 +160,8 @@
       241,
       145
      ],
-     "miejsce": "ladunek"
+     "miejsce": "ladunek",
+     "rozmiar": "duzy"
     }
    ],
    "przesuniecie": [
