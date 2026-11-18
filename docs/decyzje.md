@@ -81,3 +81,4 @@ P20 08:49 Artur: Najpierw sprawdzamy, czy narzędzie nie alarmuje na czystych na
 08:49 Szef: krok 2 R2 — 2 braki (Analityk) → Projektant.
 08:49 Szef: Z3 = FP i FN osobno, żaden nie gorszy od najprostszego sposobu, a co najmniej jeden niższy o ≥ 20% względnie (gdy bazowy > 0); 20% to założenie bez źródła — jedna wersja w 02, 03 i specu.
 08:49 Szef: raport partii (ekran B) pokazuje trzy zbiory: łatwy, trudny, pusty wzorzec — każdy podpisany.
+08:50 Szef: krok 2 R3 → Analityk.
