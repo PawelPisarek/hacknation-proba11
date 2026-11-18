@@ -6,3 +6,4 @@
 P1 08:09 Paweł: kto jest kim — jakie podpisy urządzeń mają Paweł i Artur (i czy ktoś jeszcze jest w zespole)? — czeka
 P2 08:10 Artur: Kto dokładnie będzie używał narzędzia i w jakiej chwili pracy — operator RTG przy stanowisku, patrzący na obraz naczepy tuż po prześwietleniu? (rekomendacja: tak, operator przy stanowisku, decyzja „puścić / kontrola fizyczna” w ok. 1 min na pojazd) — czeka
 P3 08:10 Artur: Co jest gorsze dla operatora: fałszywy alarm (zaznacza coś w czystej naczepie) czy przeoczenie (nie zaznacza ukrytego towaru)? (rekomendacja: przeoczenie jest gorsze, ale zadanie liczy oba błędy — ustawiamy czułość tak, by na czystych obrazach prawie nic nie zaznaczało) — czeka
+- 08:11 Szef: krok 1a (docs/pm/01) — znacznik skilla OK; recenzja przejścia runda 1 → Analityk
